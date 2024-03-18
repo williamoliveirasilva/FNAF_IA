@@ -11,7 +11,7 @@ tela = pygame.display.set_mode((tela_largura, tela_altura))
 pygame.display.set_caption('FNAF')
 
 caminho_fonte = "/fonts/pixChicago.ttf"
-fonte = pygame.font.Font(caminho_fonte, 22)
+fonte = pygame.font.Font(None, 22)
 
 relogio = pygame.time.Clock()
 cena = 1
