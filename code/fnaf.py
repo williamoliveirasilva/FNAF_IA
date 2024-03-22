@@ -11,7 +11,7 @@ tela = pygame.display.set_mode((tela_largura, tela_altura))
 pygame.display.set_caption('FNAF')
 
 caminho_fonte = "/fonts/pixChicago.ttf"
-fonte = pygame.font.Font(None, 22)
+fonte = pygame.font.Font(None, 32)
 
 relogio = pygame.time.Clock()
 cena = 1
@@ -41,7 +41,7 @@ while True:
     elif cena == 2:
         if camera == '1a':
             text_surface = fonte.render('Câmera 1a', True, (255,255,255))
-            rect = pygame.Rect(100, 100, 200, 100)
+            rect = pygame.Rect(800, 300, 150, 50)
             pygame.draw.rect(tela, (255,255,255), rect, 2)
             text_rect = text_surface.get_rect(center=rect.center)
             tela.blit(text_surface, text_rect)
