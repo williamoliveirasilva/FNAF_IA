@@ -10,8 +10,9 @@ tela_altura = 720
 tela = pygame.display.set_mode((tela_largura, tela_altura))
 pygame.display.set_caption('FNAF')
 
-caminho_fonte = "/fonts/pixChicago.ttf"
-fonte = pygame.font.Font(None, 32)
+caminho_fonte = "fonts/pixChicago.ttf"
+fonte = pygame.font.Font(caminho_fonte, 32)
+fundo = pygame.image.load("images/Background.png")
 
 relogio = pygame.time.Clock()
 cena = 1
@@ -21,6 +22,7 @@ pos_bonnie = '1a'
 pos_freddy = '1a'
 pos_chica = '1a'
 pos_foxy = '1c'
+
 
 while True:
 
@@ -40,6 +42,8 @@ while True:
         pygame.draw.rect(tela, (255, 0, 0), (400, 0, 100, 50))
     elif cena == 2:
         if camera == '1a':
+            tela.blit(fundo, (0, 0))
+
             text_surface = fonte.render('Câmera 1a', True, (255,255,255))
             rect = pygame.Rect(800, 300, 150, 50)
             pygame.draw.rect(tela, (255,255,255), rect, 2)
@@ -52,5 +56,10 @@ while True:
                 pygame.draw.rect(tela, (139, 69, 19), (500, 400, 50, 50))
             if pos_bonnie == '1a':
                 pygame.draw.rect(tela, (128, 0, 128), (300, 400, 50, 50))
+
+
+
+
+
 
     pygame.display.update()
