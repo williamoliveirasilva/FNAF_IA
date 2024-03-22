@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 from sys import exit
+import time
 
 pygame.init()
 
@@ -14,7 +15,10 @@ caminho_fonte = "fonts/pixChicago.ttf"
 fonte = pygame.font.Font(caminho_fonte, 32)
 fundo = pygame.image.load("images/Background.png")
 
-relogio = pygame.time.Clock()
+tempo_inicial = pygame.time.get_ticks() // 1000
+contador_segundos = 0
+horario = 0
+
 cena = 1
 camera = '1a'
 
@@ -22,6 +26,9 @@ pos_bonnie = '1a'
 pos_freddy = '1a'
 pos_chica = '1a'
 pos_foxy = '1c'
+
+pos_horaX = 50
+pos_horaY = 50
 
 
 while True:
@@ -41,25 +48,56 @@ while True:
     if cena == 1:
         pygame.draw.rect(tela, (255, 0, 0), (400, 0, 100, 50))
     elif cena == 2:
-        if camera == '1a':
-            tela.blit(fundo, (0, 0))
 
-            text_surface = fonte.render('Câmera 1a', True, (255,255,255))
-            rect = pygame.Rect(800, 300, 150, 50)
-            pygame.draw.rect(tela, (255,255,255), rect, 2)
-            text_rect = text_surface.get_rect(center=rect.center)
-            tela.blit(text_surface, text_rect)
+        tempo_atual = pygame.time.get_ticks() // 1000  # Tempo em segundos
+        contador_segundos: int = tempo_atual - tempo_inicial
 
-            if pos_chica == '1a':
-                pygame.draw.rect(tela, (255, 255, 0), (400, 400, 50, 50))
-            if pos_freddy == '1a':
-                pygame.draw.rect(tela, (139, 69, 19), (500, 400, 50, 50))
-            if pos_bonnie == '1a':
-                pygame.draw.rect(tela, (128, 0, 128), (300, 400, 50, 50))
+        if 0 <= contador_segundos < 85:
+            horario = 0
+        elif 85 <= contador_segundos < 170:
+            horario = 1
+        elif 170 <= contador_segundos < 255:
+            horario = 2
+        elif 255 <= contador_segundos < 340:
+            horario = 3
+        elif 340 <= contador_segundos < 425:
+            horario = 4
+        elif 425 <= contador_segundos < 510:
+            horario = 5
+        elif contador_segundos == 595:
+            horario = 6
 
+        tela.blit(fundo, (0, 0))
 
+        if horario == 0:
+            mostrar_horas = fonte.render('12 AM', True, (255, 255, 255))
+            tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
+        elif horario == 1:
+            mostrar_horas = fonte.render('1 AM', True, (255, 255, 255))
+            tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
+        elif horario == 2:
+            mostrar_horas = fonte.render('2 AM', True, (255, 255, 255))
+            tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
+        elif horario == 3:
+            mostrar_horas = fonte.render('3 AM', True, (255, 255, 255))
+            tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
+        elif horario == 4:
+            mostrar_horas = fonte.render('4 AM', True, (255, 255, 255))
+            tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
+        elif horario == 5:
+            mostrar_horas = fonte.render('5 AM', True, (255, 255, 255))
+            tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
+        elif horario == 6:
+            cena = 1
 
+        if pos_chica == '1a':
+            pygame.draw.rect(tela, (255, 255, 0), (779, 80, 38, 38))
+        if pos_freddy == '1a':
+            pygame.draw.rect(tela, (139, 69, 19), (839, 80, 38, 38))
+        if pos_bonnie == '1a':
+            pygame.draw.rect(tela, (128, 0, 128), (719, 80, 38, 38))
 
-
+        if pos_foxy == '1c':
+            pygame.draw.rect(tela, (255, 54, 54), (503, 309, 38, 38))
 
     pygame.display.update()
