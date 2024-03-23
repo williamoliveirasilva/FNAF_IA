@@ -237,9 +237,9 @@ while True:
 
         tela.blit(fundo, (0, 0))
 
-        if num_noite == 1:
-            mostrar_noite = fonte.render('Night 1', True, (255, 255, 255))
-            tela.blit(mostrar_noite, (pos_noiteX, pos_noiteY))
+
+        mostrar_noite = fonte.render('Noite ' + str(num_noite), True, (255, 255, 255))
+        tela.blit(mostrar_noite, (pos_noiteX, pos_noiteY))
 
         if horario == 0:
             mostrar_horas = fonte.render('12 AM', True, (255, 255, 255))
