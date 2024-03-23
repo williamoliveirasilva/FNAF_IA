@@ -23,7 +23,6 @@ horario = 0
 num_noite = 1
 
 cena = 1
-camera = '1a'
 
 pos_bonnie = '1a'
 pos_freddy = '1a'
@@ -40,13 +39,30 @@ pos_horaY = 80
 pos_noiteX = 30
 pos_noiteY = 20
 
-
 level_enhanced2 = False
 level_enhanced3 = False
 level_enhanced4 = False
 
 porta_esquerda = False
 porta_direita = False
+
+pos_seta_menu = 1
+
+def reset_game():
+    porta_direita = False
+    porta_direita = False
+    level_enhanced2 = False
+    level_enhanced3 = False
+    level_enhanced4 = False
+    pos_bonnie = '1a'
+    pos_freddy = '1a'
+    pos_chica = '1a'
+    pos_foxy = '1c'
+    tempo_inicial = pygame.time.get_ticks() // 1000
+    contador_segundos = 0
+    horario = 0
+
+
 
 
 while True:
@@ -55,22 +71,111 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             exit()
-        if event.type == KEYDOWN:
-            if event.key == K_SPACE:
-                tela.fill((0,0, 0))
-                if cena == 1:
-                    cena = 2
-                elif cena == 2:
-                    cena = 1
+        if cena == 1:
+            if event.type == KEYDOWN:
+                if event.key == K_RETURN:
+                    if pos_seta_menu == 1:
+                        bonnie_level = 0
+                        chica_level = 0
+                        foxy_level = 0
+                        freddy_level = 0
+                        num_noite = 1
+                        reset_game()
+                        cena = 2
+                    elif pos_seta_menu == 2:
+                        bonnie_level = 3
+                        chica_level = 1
+                        foxy_level = 1
+                        freddy_level = 0
+                        num_noite = 2
+                        reset_game()
+                    elif pos_seta_menu == 3:
+                        bonnie_level = 0
+                        chica_level = 5
+                        foxy_level = 2
+                        freddy_level = 1
+                        num_noite = 3
+                        reset_game()
+                    elif pos_seta_menu == 4:
+                        bonnie_level = 2
+                        chica_level = 4
+                        foxy_level = 6
+                        nivel_freddy = random.randint(1,2)
+                        if nivel_freddy == 1:
+                            nivel_freddy = 1
+                        else:
+                            nivel_freddy = 2
+                        num_noite = 4
+                        reset_game()
+                    elif pos_seta_menu == 5:
+                        bonnie_level = 5
+                        chica_level = 7
+                        foxy_level = 5
+                        freddy_level = 3
+                        num_noite = 5
+                        reset_game()
+                    elif pos_seta_menu == 6:
+                        bonnie_level = 10
+                        chica_level = 12
+                        foxy_level = 16
+                        freddy_level = 4
+                        num_noite = 6
+                        reset_game()
+                elif event.key == K_UP:
+                    if pos_seta_menu == 1:
+                        pos_seta_menu = 6
+                    elif pos_seta_menu == 2:
+                        pos_seta_menu = 1
+                    elif pos_seta_menu == 3:
+                        pos_seta_menu = 2
+                    elif pos_seta_menu == 4:
+                        pos_seta_menu = 3
+                    elif pos_seta_menu == 5:
+                        pos_seta_menu = 4
+                    elif pos_seta_menu == 6:
+                        pos_seta_menu = 5
+
+
 
     if cena == 1:
-        pygame.draw.rect(tela, (255, 0, 0), (400, 0, 100, 50))
+        titulo = fonte.render("FNAF AI", True, (255, 255, 255))
+        tela.blit(titulo, (65, 65))
+        noite_1 = fonte.render("Noite 1", True, (255, 255, 255))
+        tela.blit(noite_1, (65, 165))
+        noite_2 = fonte.render("Noite 2", True, (255, 255, 255))
+        tela.blit(noite_2, (65, 225))
+        noite_3 = fonte.render("Noite 3", True, (255, 255, 255))
+        tela.blit(noite_3, (65, 285))
+        noite_4 = fonte.render("Noite 4", True, (255, 255, 255))
+        tela.blit(noite_4, (65, 345))
+        noite_5 = fonte.render("Noite 5", True, (255, 255, 255))
+        tela.blit(noite_5, (65, 405))
+        noite_6 = fonte.render("Noite 6", True, (255, 255, 255))
+        tela.blit(noite_6, (65, 465))
+
+        seta = fonte.render("<", True, (255, 255, 255))
+
+        if pos_seta_menu == 1:
+            tela.blit(seta, (255, 165))
+        elif pos_seta_menu == 2:
+            tela.blit(seta, (255, 225))
+        elif pos_seta_menu == 3:
+            tela.blit(seta, (255, 285))
+        elif pos_seta_menu == 4:
+            tela.blit(seta, (255, 345))
+        elif pos_seta_menu == 5:
+            tela.blit(seta, (255, 405))
+        elif pos_seta_menu == 6:
+            tela.blit(seta, (255, 465))
+
+
+
+
     elif cena == 2:
 
         relogio.tick(1)
         tempo_atual = pygame.time.get_ticks() // 1000  # Tempo em segundos
         contador_segundos: int = tempo_atual - tempo_inicial
-
 
         if contador_segundos % 5 == 0:
             numero_sorteado = random.randint(1, 20)
@@ -78,7 +183,7 @@ while True:
                 if pos_bonnie == '1a':
                     pos_bonnie = '1b'
                 if pos_bonnie == '1b':
-                    bonnie_move = random.randint(1,3)
+                    bonnie_move = random.randint(1, 3)
                     if bonnie_move == 1:
                         pos_bonnie = '1a'
                     elif bonnie_move == 2:
@@ -86,7 +191,7 @@ while True:
                     elif bonnie_move == 3:
                         pos_bonnie = '2a'
                 if pos_bonnie == '2a':
-                    bonnie_move = random.randint(1,3)
+                    bonnie_move = random.randint(1, 3)
                     if bonnie_move == 1:
                         pos_bonnie = '2b'
                     elif bonnie_move == 2:
@@ -96,20 +201,14 @@ while True:
                 if pos_bonnie == '3':
                     pos_bonnie = '1b'
                 if pos_bonnie == '2b':
-                    if porta_esquerda == True:
+                    if porta_esquerda:
                         pos_bonnie = '2a'
                     else:
                         cena = 3
 
-
-
-
-
-
             if chica_level >= numero_sorteado:
                 if chica_level == '1a':
                     chica_level = '1b'
-
 
         if contador_segundos % 3 == 0:
             numero_sorteado = random.randint(1, 20)
@@ -210,6 +309,5 @@ while True:
     elif cena == 3:
         game_over = fonte.render("Game Over" + str(bonnie_level), True, (255, 255, 255))
         tela.blit(game_over, (640, 360))
-
 
     pygame.display.update()
