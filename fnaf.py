@@ -89,12 +89,14 @@ while True:
                         freddy_level = 0
                         num_noite = 2
                         reset_game()
+                        cena = 2
                     elif pos_seta_menu == 3:
                         bonnie_level = 0
                         chica_level = 5
                         foxy_level = 2
                         freddy_level = 1
                         num_noite = 3
+                        cena = 2
                         reset_game()
                     elif pos_seta_menu == 4:
                         bonnie_level = 2
@@ -107,6 +109,7 @@ while True:
                             nivel_freddy = 2
                         num_noite = 4
                         reset_game()
+                        cena = 2
                     elif pos_seta_menu == 5:
                         bonnie_level = 5
                         chica_level = 7
@@ -114,6 +117,7 @@ while True:
                         freddy_level = 3
                         num_noite = 5
                         reset_game()
+                        cena = 2
                     elif pos_seta_menu == 6:
                         bonnie_level = 10
                         chica_level = 12
@@ -121,6 +125,7 @@ while True:
                         freddy_level = 4
                         num_noite = 6
                         reset_game()
+                        cena = 2
                 elif event.key == K_UP:
                     if pos_seta_menu == 1:
                         pos_seta_menu = 6
