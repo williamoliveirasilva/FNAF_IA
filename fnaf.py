@@ -76,7 +76,24 @@ while True:
                 if pos_bonnie == '1a':
                     pos_bonnie = '1b'
                 if pos_bonnie == '1b':
-                    pos_bonnie = '2a'
+                    bonnie_move = random.randint(1,3)
+                    if bonnie_move == 1:
+                        pos_bonnie = '1a'
+                    elif bonnie_move == 2:
+                        pos_bonnie = '5'
+                    elif bonnie_move == 3:
+                        pos_bonnie = '2a'
+                if pos_bonnie == '2a':
+                    bonnie_move = random.randint(1,3)
+                    if bonnie_move == 1:
+                        pos_bonnie = '2b'
+                    elif bonnie_move == 2:
+                        pos_bonnie = '1b'
+                    elif bonnie_move == 3:
+                        pos_bonnie = '3'
+
+
+
             if chica_level >= numero_sorteado:
                 if chica_level == '1a':
                     chica_level = '1b'
@@ -157,6 +174,14 @@ while True:
             pygame.draw.rect(tela, (128, 0, 128), (719, 80, 38, 38))
         elif pos_bonnie == '1b':
             pygame.draw.rect(tela, (128, 0, 128), (651, 237, 38, 38))
+        elif pos_bonnie == '5':
+            pygame.draw.rect(tela, (128, 0, 128), (475, 171, 38, 38))
+        elif pos_bonnie == '3':
+            pygame.draw.rect(tela, (128, 0, 128), (563, 482, 38, 38))
+        elif pos_bonnie == '2a':
+            pygame.draw.rect(tela, (128, 0, 128), (670, 441, 38, 38))
+        elif pos_bonnie == '2b':
+            pygame.draw.rect(tela, (128, 0, 128), (670, 564, 38, 38))
 
         if pos_foxy == '1c':
             pygame.draw.rect(tela, (255, 54, 54), (503, 309, 38, 38))
