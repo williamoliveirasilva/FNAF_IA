@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 from sys import exit
 import time
+import random
 
 pygame.init()
 
@@ -15,6 +16,7 @@ caminho_fonte = "fonts/pixChicago.ttf"
 fonte = pygame.font.Font(caminho_fonte, 32)
 fundo = pygame.image.load("images/Background.png")
 
+relogio = pygame.time.Clock()
 tempo_inicial = pygame.time.get_ticks() // 1000
 contador_segundos = 0
 horario = 0
@@ -31,7 +33,7 @@ pos_foxy = '1c'
 bonnie_level = 0
 chica_level = 0
 freddy_level = 0
-fox_level = 0
+foxy_level = 0
 
 pos_horaX = 30
 pos_horaY = 80
@@ -63,8 +65,27 @@ while True:
         pygame.draw.rect(tela, (255, 0, 0), (400, 0, 100, 50))
     elif cena == 2:
 
+        relogio.tick(1)
         tempo_atual = pygame.time.get_ticks() // 1000  # Tempo em segundos
         contador_segundos: int = tempo_atual - tempo_inicial
+
+
+        if contador_segundos % 5 == 0:
+            numero_sorteado = random.randint(1, 20)
+            if bonnie_level >= numero_sorteado:
+                if pos_bonnie == '1a':
+                    pos_bonnie = '1b'
+                if pos_bonnie == '1b':
+                    pos_bonnie = '2a'
+            if chica_level >= numero_sorteado:
+                if chica_level == '1a':
+                    chica_level = '1b'
+
+
+        if contador_segundos % 3 == 0:
+            numero_sorteado = random.randint(1, 20)
+            if freddy_level >= numero_sorteado:
+                print("Freddy se moveu")
 
         if 0 <= contador_segundos < 85:
             horario = 0
@@ -86,10 +107,6 @@ while True:
         if num_noite == 1:
             mostrar_noite = fonte.render('Night 1', True, (255, 255, 255))
             tela.blit(mostrar_noite, (pos_noiteX, pos_noiteY))
-            bonnie_level = 0
-            chica_level = 0
-            fox_level = 0
-            freddy_level = 0
 
         if horario == 0:
             mostrar_horas = fonte.render('12 AM', True, (255, 255, 255))
@@ -103,25 +120,25 @@ while True:
         elif horario == 2:
             mostrar_horas = fonte.render('2 AM', True, (255, 255, 255))
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
-            if level_enhanced2 == False:
+            if not level_enhanced2:
                 level_enhanced2 = True
                 bonnie_level += 1
         elif horario == 3:
             mostrar_horas = fonte.render('3 AM', True, (255, 255, 255))
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
-            if level_enhanced3 == False:
+            if not level_enhanced3:
                 level_enhanced3 = True
                 bonnie_level += 1
                 chica_level += 1
-                fox_level += 1
+                foxy_level += 1
         elif horario == 4:
             mostrar_horas = fonte.render('4 AM', True, (255, 255, 255))
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
-            if level_enhanced4 == False:
+            if not level_enhanced4:
                 level_enhanced4 = True
                 bonnie_level += 1
                 chica_level += 1
-                fox_level += 1
+                foxy_level += 1
         elif horario == 5:
             mostrar_horas = fonte.render('5 AM', True, (255, 255, 255))
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
@@ -130,13 +147,29 @@ while True:
 
         if pos_chica == '1a':
             pygame.draw.rect(tela, (255, 255, 0), (779, 80, 38, 38))
+        elif chica_level == '1b':
+            pygame.draw.rect(tela, (255, 255, 0), (903, 237, 38, 38))
+
         if pos_freddy == '1a':
             pygame.draw.rect(tela, (139, 69, 19), (839, 80, 38, 38))
+
         if pos_bonnie == '1a':
             pygame.draw.rect(tela, (128, 0, 128), (719, 80, 38, 38))
+        elif pos_bonnie == '1b':
+            pygame.draw.rect(tela, (128, 0, 128), (651, 237, 38, 38))
 
         if pos_foxy == '1c':
             pygame.draw.rect(tela, (255, 54, 54), (503, 309, 38, 38))
+
+        nivel_bonnie = fonte.render("Bonnie: " + str(bonnie_level), True, (255, 255, 255))
+        tela.blit(nivel_bonnie, (pos_horaX, 240))
+        nivel_chica = fonte.render("Chica: " + str(chica_level), True, (255, 255, 255))
+        tela.blit(nivel_chica, (pos_horaX, 300))
+        nivel_foxy = fonte.render("Foxy: " + str(foxy_level), True, (255, 255, 255))
+        tela.blit(nivel_foxy, (pos_horaX, 360))
+        nivel_freddy = fonte.render("Freddy: " + str(freddy_level), True, (255, 255, 255))
+        tela.blit(nivel_freddy, (pos_horaX, 420))
+
 
 
     pygame.display.update()
