@@ -49,6 +49,7 @@ porta_direita = False
 pos_seta_menu = 1
 sorteio = 0
 
+
 def reset_game():
     porta_direita = False
     porta_direita = False
@@ -62,8 +63,7 @@ def reset_game():
     tempo_inicial = pygame.time.get_ticks() // 1000
     contador_segundos = 0
     horario = 0
-
-
+    return
 
 
 while True:
@@ -103,7 +103,7 @@ while True:
                         bonnie_level = 2
                         chica_level = 4
                         foxy_level = 6
-                        nivel_freddy = random.randint(1,2)
+                        nivel_freddy = random.randint(1, 2)
                         if nivel_freddy == 1:
                             nivel_freddy = 1
                         else:
@@ -140,8 +140,6 @@ while True:
                         pos_seta_menu = 4
                     elif pos_seta_menu == 6:
                         pos_seta_menu = 5
-
-
 
     if cena == 1:
         titulo = fonte.render("FNAF AI", True, (255, 255, 255))
@@ -215,8 +213,8 @@ while True:
             if chica_level >= numero_sorteado:
                 if pos_chica == '1a':
                     pos_chica = '1b'
-                elif pos_chica  == '1b':
-                    chica_movimento = random.randint(1,4)
+                elif pos_chica == '1b':
+                    chica_movimento = random.randint(1, 4)
                     if chica_movimento == 1:
                         pos_chica = '7'
                     elif chica_movimento == 2:
@@ -228,7 +226,7 @@ while True:
                 elif pos_chica == '6':
                     pos_chica = '1b'
                 elif pos_chica == '4a':
-                    chica_movimento = random.randint(1,2)
+                    chica_movimento = random.randint(1, 2)
                     if chica_movimento == 1:
                         pos_chica = '4b'
                     else:
@@ -238,7 +236,6 @@ while True:
                         cena = 3
                     else:
                         pos_chica = '4a'
-
 
         if contador_segundos % 3 == 0:
             numero_sorteado = random.randint(1, 20)
@@ -315,7 +312,6 @@ while True:
         elif pos_chica == '4b':
             pygame.draw.rect(tela, (255, 255, 0), (887, 575, 38, 38))
 
-
         if pos_freddy == '1a':
             pygame.draw.rect(tela, (139, 69, 19), (839, 80, 38, 38))
 
@@ -338,13 +334,13 @@ while True:
         numero_sort = fonte.render("Número: " + str(sorteio), True, (255, 255, 255))
         tela.blit(numero_sort, (pos_horaX, 240))
         nivel_bonnie = fonte.render("Bonnie: " + str(bonnie_level), True, (255, 255, 255))
-        tela.blit(nivel_bonnie, (pos_horaX, 240+60))
+        tela.blit(nivel_bonnie, (pos_horaX, 240 + 60))
         nivel_chica = fonte.render("Chica: " + str(chica_level), True, (255, 255, 255))
-        tela.blit(nivel_chica, (pos_horaX, 300+60))
+        tela.blit(nivel_chica, (pos_horaX, 300 + 60))
         nivel_foxy = fonte.render("Foxy: " + str(foxy_level), True, (255, 255, 255))
-        tela.blit(nivel_foxy, (pos_horaX, 360+60))
+        tela.blit(nivel_foxy, (pos_horaX, 360 + 60))
         nivel_freddy = fonte.render("Freddy: " + str(freddy_level), True, (255, 255, 255))
-        tela.blit(nivel_freddy, (pos_horaX, 420+60))
+        tela.blit(nivel_freddy, (pos_horaX, 420 + 60))
 
     elif cena == 3:
         game_over = fonte.render("Game Over" + str(bonnie_level), True, (255, 255, 255))
