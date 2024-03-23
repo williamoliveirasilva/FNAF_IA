@@ -5,7 +5,7 @@ Este é um projeto em desenvolvimento de uma inteligência artificial (IA) basea
 ## Sobre o Projeto
 O objetivo deste projeto é replicar o comportamento da IA do jogo Five Nights at Freddy's 1 em um ambiente controlado. Isso inclui a criação de personagens animatrônicos que se movem de forma autônoma e tentam atacar o jogador, seguindo padrões de comportamento predefinidos.
 
-## Funcionamento dos Animatronics
+### Funcionamento dos Animatronics
 Os animatrônicos se movem com base em um sorteio de 1 a 20. Se o valor atribuído ao animatrônico for superior ao número sorteado, ele será capaz de se movimentar.
 Os níveis dos animatronics são definidos pelo número da noite, e são incrementados ao passar das horas (no jogo).
 Os valores inciais de cada animatronic são:
