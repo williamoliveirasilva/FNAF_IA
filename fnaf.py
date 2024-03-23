@@ -47,6 +47,7 @@ porta_esquerda = False
 porta_direita = False
 
 pos_seta_menu = 1
+sorteio = 0
 
 def reset_game():
     porta_direita = False
@@ -184,17 +185,18 @@ while True:
 
         if contador_segundos % 5 == 0:
             numero_sorteado = random.randint(1, 20)
+            sorteio = numero_sorteado
             if bonnie_level >= numero_sorteado:
                 if pos_bonnie == '1a':
                     pos_bonnie = '1b'
                 if pos_bonnie == '1b':
-                    bonnie_move = random.randint(1, 3)
+                    bonnie_move = random.randint(1, 2)
                     if bonnie_move == 1:
-                        pos_bonnie = '1a'
+                        pos_bonnie = '2a'
                     elif bonnie_move == 2:
                         pos_bonnie = '5'
                     elif bonnie_move == 3:
-                        pos_bonnie = '2a'
+                        pos_bonnie = '1a'
                 if pos_bonnie == '2a':
                     bonnie_move = random.randint(1, 3)
                     if bonnie_move == 1:
@@ -204,6 +206,8 @@ while True:
                     elif bonnie_move == 3:
                         pos_bonnie = '3'
                 if pos_bonnie == '3':
+                    pos_bonnie = '2a'
+                if pos_bonnie == '5':
                     pos_bonnie = '1b'
                 if pos_bonnie == '2b':
                     if porta_esquerda:
@@ -236,7 +240,6 @@ while True:
             horario = 6
 
         tela.blit(fundo, (0, 0))
-
 
         mostrar_noite = fonte.render('Noite ' + str(num_noite), True, (255, 255, 255))
         tela.blit(mostrar_noite, (pos_noiteX, pos_noiteY))
@@ -302,14 +305,16 @@ while True:
         if pos_foxy == '1c':
             pygame.draw.rect(tela, (255, 54, 54), (503, 309, 38, 38))
 
+        numero_sort = fonte.render("Número: " + str(sorteio), True, (255, 255, 255))
+        tela.blit(numero_sort, (pos_horaX, 240))
         nivel_bonnie = fonte.render("Bonnie: " + str(bonnie_level), True, (255, 255, 255))
-        tela.blit(nivel_bonnie, (pos_horaX, 240))
+        tela.blit(nivel_bonnie, (pos_horaX, 240+60))
         nivel_chica = fonte.render("Chica: " + str(chica_level), True, (255, 255, 255))
-        tela.blit(nivel_chica, (pos_horaX, 300))
+        tela.blit(nivel_chica, (pos_horaX, 300+60))
         nivel_foxy = fonte.render("Foxy: " + str(foxy_level), True, (255, 255, 255))
-        tela.blit(nivel_foxy, (pos_horaX, 360))
+        tela.blit(nivel_foxy, (pos_horaX, 360+60))
         nivel_freddy = fonte.render("Freddy: " + str(freddy_level), True, (255, 255, 255))
-        tela.blit(nivel_freddy, (pos_horaX, 420))
+        tela.blit(nivel_freddy, (pos_horaX, 420+60))
 
     elif cena == 3:
         game_over = fonte.render("Game Over" + str(bonnie_level), True, (255, 255, 255))
