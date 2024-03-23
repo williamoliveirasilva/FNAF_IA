@@ -379,11 +379,18 @@ while True:
         tela.blit(nivel_freddy, (pos_horaX, 420 + 60))
 
     elif cena == 3:
+        nivel_foxy = 0
+        nivel_chica = 0
+        nivel_bonnie = 0
+        nivel_freddy = 0
         som_chicaCozinha.stop()
-        som_chicaCozinha.stop()
-        som_gameOver.play()
+        som_movimentoBonnie.stop()
         tela.blit(image_gameOver, (0, 0))
         game_over = fonte.render("Game Over", True, (255, 255, 255))
-        tela.blit(game_over, (60, 360))
+        tela.blit(game_over, (60, 350))
+        game_over = fonte.render("Precione qualquer tecla", True, (255, 255, 255))
+        tela.blit(game_over, (60, 400))
+        som_gameOver.play()
+
 
     pygame.display.update()
