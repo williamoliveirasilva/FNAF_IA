@@ -19,7 +19,7 @@ Os valores inciais de cada animatronic são:
 | Noite 5 | 5      |7|5|3|
 | Noite 6 | 10     |12|16|4|
 
-Até as 2 horas da manhã, os valores dos animatrônicos não são incrementados. No entanto, a partir desse horário, os valores serão incrementados, com exceção de Freddy, cujo valor nunca é aumentado.
+Até as 2 horas da manhã, os valores dos animatrônicos não são alterados. No entanto, a partir desse horário, os valores serão incrementados, com exceção de Freddy, cujo valor nunca é aumentado.
 Os incrementos são dados por:
 
 |       | Bonnie | Chica | Foxy | Freddy |
