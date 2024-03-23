@@ -1,4 +1,4 @@
-# FNAF_AI
+# FNAF_IA
 
 Este é um projeto em desenvolvimento de uma inteligência artificial (IA) baseada no jogo Five Nights at Freddy's (FNAF) utilizando Python e Pygame.
 
