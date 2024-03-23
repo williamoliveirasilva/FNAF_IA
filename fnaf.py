@@ -55,6 +55,8 @@ freddy_sprite = pygame.image.load('images/spt_freddy.png')
 foxy_sprite = pygame.image.load('images/spt_foxy.png')
 
 som_movimentoBonnie = pygame.mixer.Sound('sounds/BonnieChicamoving.ogg')
+som_menu = pygame.mixer.Sound('sounds/FNAFMenumusic.ogg')
+som_chicaCozinha = pygame.mixer.Sound('sounds/ChicaKitchen.ogg')
 
 def reset_game():
     porta_direita = False
@@ -148,6 +150,9 @@ while True:
                         pos_seta_menu = 5
 
     if cena == 1:
+
+        som_menu.play()
+
         titulo = fonte.render("FNAF AI", True, (255, 255, 255))
         tela.blit(titulo, (65, 65))
         noite_1 = fonte.render("Noite 1", True, (255, 255, 255))
@@ -179,6 +184,8 @@ while True:
             tela.blit(seta, (255, 465))
 
     elif cena == 2:
+
+        som_menu.stop()
 
         relogio.tick(1)
         tempo_atual = pygame.time.get_ticks() // 1000  # Tempo em segundos
@@ -226,6 +233,7 @@ while True:
                         pos_chica = '7'
                     elif chica_movimento == 2:
                         pos_chica = '6'
+                        som_chicaCozinha.play()
                     elif chica_movimento == 3:
                         pos_chica = '4a'
                 elif pos_chica == '7':
