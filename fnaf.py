@@ -49,6 +49,7 @@ porta_direita = False
 pos_seta_menu = 1
 sorteio = 0
 
+bonnie_sprite = pygame.image.load('images/spt_bonnie.png')
 
 def reset_game():
     porta_direita = False
@@ -316,7 +317,7 @@ while True:
             pygame.draw.rect(tela, (139, 69, 19), (839, 80, 38, 38))
 
         if pos_bonnie == '1a':
-            pygame.draw.rect(tela, (128, 0, 128), (719, 80, 38, 38))
+            tela.blit(bonnie_sprite, (719, 80))
         elif pos_bonnie == '1b':
             pygame.draw.rect(tela, (128, 0, 128), (651, 237, 38, 38))
         elif pos_bonnie == '5':
