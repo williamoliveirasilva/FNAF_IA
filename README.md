@@ -32,5 +32,7 @@ Os incrementos são dados por:
 | 5 AM    | +0     | +0    | +0   | +0     |
 
 
+> Este README está em processo de desenvolvimento e ainda não está finalizado. Novas seções e informações serão adicionadas em breve.
+
 
 
