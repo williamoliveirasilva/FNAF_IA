@@ -317,17 +317,17 @@ while True:
             pygame.draw.rect(tela, (139, 69, 19), (839, 80, 38, 38))
 
         if pos_bonnie == '1a':
-            tela.blit(bonnie_sprite, (719, 80))
+            tela.blit(bonnie_sprite, (719-37, 80-55))
         elif pos_bonnie == '1b':
-            pygame.draw.rect(tela, (128, 0, 128), (651, 237, 38, 38))
+            tela.blit(bonnie_sprite, (651 - 37, 237 - 55))
         elif pos_bonnie == '5':
-            pygame.draw.rect(tela, (128, 0, 128), (475, 171, 38, 38))
+            tela.blit(bonnie_sprite, (475 - 37, 171 - 55))
         elif pos_bonnie == '3':
-            pygame.draw.rect(tela, (128, 0, 128), (563, 482, 38, 38))
+            tela.blit(bonnie_sprite, (563 - 37, 482 - 55))
         elif pos_bonnie == '2a':
-            pygame.draw.rect(tela, (128, 0, 128), (670, 441, 38, 38))
+            tela.blit(bonnie_sprite, (670 - 37, 441 - 55))
         elif pos_bonnie == '2b':
-            pygame.draw.rect(tela, (128, 0, 128), (670, 564, 38, 38))
+            tela.blit(bonnie_sprite, (670 - 37, 564 - 55))
 
         if pos_foxy == '1c':
             pygame.draw.rect(tela, (255, 54, 54), (503, 309, 38, 38))
