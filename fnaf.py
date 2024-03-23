@@ -50,6 +50,7 @@ pos_seta_menu = 1
 sorteio = 0
 
 bonnie_sprite = pygame.image.load('images/spt_bonnie.png')
+chica_sprite = pygame.image.load('images/spt_chica.png')
 
 def reset_game():
     porta_direita = False
@@ -301,17 +302,18 @@ while True:
             cena = 1
 
         if pos_chica == '1a':
-            pygame.draw.rect(tela, (255, 255, 0), (779, 80, 38, 38))
+            tela.blit(chica_sprite, (779-37, 80-37))
+
         elif pos_chica == '1b':
-            pygame.draw.rect(tela, (255, 255, 0), (903, 237, 38, 38))
+            tela.blit(chica_sprite, (903-37, 237-37))
         elif pos_chica == '7':
-            pygame.draw.rect(tela, (255, 255, 0), (1074, 236, 38, 38))
+            tela.blit(chica_sprite, (1074 - 37, 236 - 37))
         elif pos_chica == '6':
-            pygame.draw.rect(tela, (255, 255, 0), (1040, 451, 38, 38))
+            tela.blit(chica_sprite, (1040 - 37, 451 - 37))
         elif pos_chica == '4a':
-            pygame.draw.rect(tela, (255, 255, 0), (887, 441, 38, 38))
+            tela.blit(chica_sprite, (887 - 37, 441 - 37))
         elif pos_chica == '4b':
-            pygame.draw.rect(tela, (255, 255, 0), (887, 575, 38, 38))
+            tela.blit(chica_sprite, (887 - 37, 575 - 37))
 
         if pos_freddy == '1a':
             pygame.draw.rect(tela, (139, 69, 19), (839, 80, 38, 38))
