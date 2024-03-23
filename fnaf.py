@@ -51,6 +51,8 @@ sorteio = 0
 
 bonnie_sprite = pygame.image.load('images/spt_bonnie.png')
 chica_sprite = pygame.image.load('images/spt_chica.png')
+freddy_sprite = pygame.image.load('images/spt_freddy.png')
+foxy_sprite = pygame.image.load('images/spt_foxy.png')
 
 def reset_game():
     porta_direita = False
@@ -316,7 +318,7 @@ while True:
             tela.blit(chica_sprite, (887 - 37, 575 - 37))
 
         if pos_freddy == '1a':
-            pygame.draw.rect(tela, (139, 69, 19), (839, 80, 38, 38))
+            tela.blit(freddy_sprite, (839 - 37, 80 - 37))
 
         if pos_bonnie == '1a':
             tela.blit(bonnie_sprite, (719-37, 80-55))
@@ -333,6 +335,8 @@ while True:
 
         if pos_foxy == '1c':
             pygame.draw.rect(tela, (255, 54, 54), (503, 309, 38, 38))
+            tela.blit(foxy_sprite, (503 - 37, 309 - 37))
+
 
         numero_sort = fonte.render("Número: " + str(sorteio), True, (255, 255, 255))
         tela.blit(numero_sort, (pos_horaX, 240))
