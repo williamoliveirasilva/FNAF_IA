@@ -216,8 +216,32 @@ while True:
                         cena = 3
 
             if chica_level >= numero_sorteado:
-                if chica_level == '1a':
-                    chica_level = '1b'
+                if pos_chica == '1a':
+                    pos_chica = '1b'
+                elif pos_chica  == '1b':
+                    chica_movimento = random.randint(1,4)
+                    if chica_movimento == 1:
+                        pos_chica = '7'
+                    elif chica_movimento == 2:
+                        pos_chica = '6'
+                    elif chica_movimento == 3:
+                        pos_chica = '4a'
+                elif pos_chica == '7':
+                    pos_chica = '1b'
+                elif pos_chica == '6':
+                    pos_chica = '1b'
+                elif pos_chica == '4a':
+                    chica_movimento = random.randint(1,2)
+                    if chica_movimento == 1:
+                        pos_chica = '4b'
+                    else:
+                        pos_chica = '1b'
+                elif pos_chica == '4b':
+                    if not porta_direita:
+                        cena = 3
+                    else:
+                        pos_chica = '4a'
+
 
         if contador_segundos % 3 == 0:
             numero_sorteado = random.randint(1, 20)
