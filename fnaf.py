@@ -15,6 +15,7 @@ pygame.display.set_caption('FNAF')
 caminho_fonte = "fonts/pixChicago.ttf"
 fonte = pygame.font.Font(caminho_fonte, 32)
 fundo = pygame.image.load("images/Background.png")
+fundo_menu = pygame.image.load('images/Menu Background.gif')
 
 relogio = pygame.time.Clock()
 tempo_inicial = pygame.time.get_ticks() // 1000
@@ -57,6 +58,7 @@ foxy_sprite = pygame.image.load('images/spt_foxy.png')
 som_movimentoBonnie = pygame.mixer.Sound('sounds/BonnieChicamoving.ogg')
 som_menu = pygame.mixer.Sound('sounds/FNAFMenumusic.ogg')
 som_chicaCozinha = pygame.mixer.Sound('sounds/ChicaKitchen.ogg')
+som_gameOver = pygame.mixer.Sound('sounds/Static.ogg')
 
 def reset_game():
     porta_direita = False
@@ -151,6 +153,7 @@ while True:
 
     if cena == 1:
 
+        tela.blit(fundo_menu, (0, 0))
         som_menu.play()
 
         titulo = fonte.render("FNAF AI", True, (255, 255, 255))
@@ -225,6 +228,7 @@ while True:
                         cena = 3
 
             if chica_level >= numero_sorteado:
+                som_movimentoBonnie.play()
                 if pos_chica == '1a':
                     pos_chica = '1b'
                 elif pos_chica == '1b':
@@ -360,6 +364,10 @@ while True:
         tela.blit(nivel_freddy, (pos_horaX, 420 + 60))
 
     elif cena == 3:
+        tela.fill(0,0,0)
+        som_chicaCozinha.stop()
+        som_chicaCozinha.stop()
+        som_gameOver.play()
         game_over = fonte.render("Game Over" + str(bonnie_level), True, (255, 255, 255))
         tela.blit(game_over, (640, 360))
 
