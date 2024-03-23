@@ -55,6 +55,8 @@ chica_sprite = pygame.image.load('images/spt_chica.png')
 freddy_sprite = pygame.image.load('images/spt_freddy.png')
 foxy_sprite = pygame.image.load('images/spt_foxy.png')
 
+image_gameOver = pygame.image.load('images/gameoverscreen.png')
+
 som_movimentoBonnie = pygame.mixer.Sound('sounds/BonnieChicamoving.ogg')
 som_menu = pygame.mixer.Sound('sounds/FNAFMenumusic.ogg')
 som_chicaCozinha = pygame.mixer.Sound('sounds/ChicaKitchen.ogg')
@@ -150,6 +152,19 @@ while True:
                         pos_seta_menu = 4
                     elif pos_seta_menu == 6:
                         pos_seta_menu = 5
+                elif event.key == K_DOWN:
+                    if pos_seta_menu == 1:
+                        pos_seta_menu = 2
+                    elif pos_seta_menu == 2:
+                        pos_seta_menu = 3
+                    elif pos_seta_menu == 3:
+                        pos_seta_menu = 4
+                    elif pos_seta_menu == 4:
+                        pos_seta_menu = 5
+                    elif pos_seta_menu == 5:
+                        pos_seta_menu = 6
+                    elif pos_seta_menu == 6:
+                        pos_seta_menu = 1
 
     if cena == 1:
 
@@ -364,11 +379,11 @@ while True:
         tela.blit(nivel_freddy, (pos_horaX, 420 + 60))
 
     elif cena == 3:
-        tela.fill(0,0,0)
         som_chicaCozinha.stop()
         som_chicaCozinha.stop()
         som_gameOver.play()
-        game_over = fonte.render("Game Over" + str(bonnie_level), True, (255, 255, 255))
-        tela.blit(game_over, (640, 360))
+        tela.blit(image_gameOver, (0, 0))
+        game_over = fonte.render("Game Over", True, (255, 255, 255))
+        tela.blit(game_over, (60, 360))
 
     pygame.display.update()
