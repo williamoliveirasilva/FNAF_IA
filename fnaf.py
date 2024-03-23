@@ -45,6 +45,8 @@ level_enhanced2 = False
 level_enhanced3 = False
 level_enhanced4 = False
 
+porta_esquerda = False
+porta_direita = False
 
 
 while True:
@@ -91,6 +93,16 @@ while True:
                         pos_bonnie = '1b'
                     elif bonnie_move == 3:
                         pos_bonnie = '3'
+                if pos_bonnie == '3':
+                    pos_bonnie = '1b'
+                if pos_bonnie == '2b':
+                    if porta_esquerda == True:
+                        pos_bonnie = '2a'
+                    else:
+                        cena = 3
+
+
+
 
 
 
@@ -195,6 +207,9 @@ while True:
         nivel_freddy = fonte.render("Freddy: " + str(freddy_level), True, (255, 255, 255))
         tela.blit(nivel_freddy, (pos_horaX, 420))
 
+    elif cena == 3:
+        game_over = fonte.render("Game Over" + str(bonnie_level), True, (255, 255, 255))
+        tela.blit(game_over, (640, 360))
 
 
     pygame.display.update()
