@@ -334,7 +334,6 @@ while True:
             tela.blit(bonnie_sprite, (670 - 37, 564 - 55))
 
         if pos_foxy == '1c':
-            pygame.draw.rect(tela, (255, 54, 54), (503, 309, 38, 38))
             tela.blit(foxy_sprite, (503 - 37, 309 - 37))
 
 
