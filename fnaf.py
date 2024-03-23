@@ -54,6 +54,8 @@ chica_sprite = pygame.image.load('images/spt_chica.png')
 freddy_sprite = pygame.image.load('images/spt_freddy.png')
 foxy_sprite = pygame.image.load('images/spt_foxy.png')
 
+som_movimentoBonnie = pygame.mixer.Sound('sounds/BonnieChicamoving.ogg')
+
 def reset_game():
     porta_direita = False
     porta_direita = False
@@ -186,6 +188,7 @@ while True:
             numero_sorteado = random.randint(1, 20)
             sorteio = numero_sorteado
             if bonnie_level >= numero_sorteado:
+                som_movimentoBonnie.play()
                 if pos_bonnie == '1a':
                     pos_bonnie = '1b'
                 elif pos_bonnie == '1b':
