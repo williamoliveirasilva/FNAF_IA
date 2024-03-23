@@ -174,9 +174,6 @@ while True:
         elif pos_seta_menu == 6:
             tela.blit(seta, (255, 465))
 
-
-
-
     elif cena == 2:
 
         relogio.tick(1)
@@ -307,8 +304,17 @@ while True:
 
         if pos_chica == '1a':
             pygame.draw.rect(tela, (255, 255, 0), (779, 80, 38, 38))
-        elif chica_level == '1b':
+        elif pos_chica == '1b':
             pygame.draw.rect(tela, (255, 255, 0), (903, 237, 38, 38))
+        elif pos_chica == '7':
+            pygame.draw.rect(tela, (255, 255, 0), (1074, 236, 38, 38))
+        elif pos_chica == '6':
+            pygame.draw.rect(tela, (255, 255, 0), (1040, 451, 38, 38))
+        elif pos_chica == '4a':
+            pygame.draw.rect(tela, (255, 255, 0), (887, 441, 38, 38))
+        elif pos_chica == '4b':
+            pygame.draw.rect(tela, (255, 255, 0), (887, 575, 38, 38))
+
 
         if pos_freddy == '1a':
             pygame.draw.rect(tela, (139, 69, 19), (839, 80, 38, 38))
