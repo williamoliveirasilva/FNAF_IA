@@ -189,7 +189,7 @@ while True:
             if bonnie_level >= numero_sorteado:
                 if pos_bonnie == '1a':
                     pos_bonnie = '1b'
-                if pos_bonnie == '1b':
+                elif pos_bonnie == '1b':
                     bonnie_move = random.randint(1, 2)
                     if bonnie_move == 1:
                         pos_bonnie = '2a'
@@ -197,7 +197,7 @@ while True:
                         pos_bonnie = '5'
                     elif bonnie_move == 3:
                         pos_bonnie = '1a'
-                if pos_bonnie == '2a':
+                elif pos_bonnie == '2a':
                     bonnie_move = random.randint(1, 3)
                     if bonnie_move == 1:
                         pos_bonnie = '2b'
@@ -205,11 +205,11 @@ while True:
                         pos_bonnie = '1b'
                     elif bonnie_move == 3:
                         pos_bonnie = '3'
-                if pos_bonnie == '3':
+                elif pos_bonnie == '3':
                     pos_bonnie = '2a'
-                if pos_bonnie == '5':
+                elif pos_bonnie == '5':
                     pos_bonnie = '1b'
-                if pos_bonnie == '2b':
+                elif pos_bonnie == '2b':
                     if porta_esquerda:
                         pos_bonnie = '2a'
                     else:
