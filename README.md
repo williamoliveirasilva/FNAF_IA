@@ -15,19 +15,19 @@ Os animatrônicos se movem com base em um sorteio de 1 a 20. Se o `valor atribu�
 Os níveis dos animatrônicos são definidos pelo número da noite, e são incrementados ao passar das horas (no jogo).
 Os valores inciais de cada animatrônico são:
 
-|         | Bonnie | Chica | Foxy | Freddy |
-|---------|--------|-------|------|--------|
-| Noite 1 | 0      | 0     | 0    | 0      |
-| Noite 2 | 3      | 1     | 1    | 0      |
-| Noite 3 | 0      | 5|2| 1      |
-| Noite 4 | 2      |4|6| 1 ou 2 |
-| Noite 5 | 5      |7|5|3|
-| Noite 6 | 10     |12|16|4|
+| <img src="images/spt_goldenfreddy.png" width="37" height="37"> |  Bonnie | Chica | Foxy | Freddy |
+|----------------------------------------------------------------|------------------------------------------------------------------------|-------|------|--------|
+| Noite 1                                                        | 0                                                                      | 0     | 0    | 0      |
+| Noite 2                                                        | 3                                                                      | 1     | 1    | 0      |
+| Noite 3                                                        | 0                                                                      | 5     |2| 1      |
+| Noite 4                                                        | 2                                                                      | 4     |6| 1 ou 2 |
+| Noite 5                                                        | 5                                                                      | 7     |5|3|
+| Noite 6                                                        | 10                                                                     | 12    |16|4|
 
 Até as 2 horas da manhã, os valores dos animatrônicos não são alterados. No entanto, a partir desse horário, os valores serão incrementados, com exceção de Freddy, cujo valor nunca é aumentado.
 Os incrementos são dados por:
 
-|       | Bonnie | Chica | Foxy | Freddy |
+|  <img src="images/spt_goldenfreddy.png" width="37" height="37">    | Bonnie | Chica | Foxy | Freddy |
 |-------|------|-----|----|------|
 | 12 AM | +0   | +0  | +0 | +0   |
 | 1 AM  | +0   | +0  | +0 | +0   |
