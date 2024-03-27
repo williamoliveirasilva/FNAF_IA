@@ -459,4 +459,8 @@ while True:
         tela.blit(game_over, (60, 400))
         som_gameOver.play()
 
+    elif cena == 4:
+        six_am = fonte.render("6 AM", True, (255, 255, 255))
+        tela.blit(six_am, (60, 350))
+
     pygame.display.update()
