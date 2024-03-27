@@ -29,6 +29,7 @@ pos_bonnie = '1a'
 pos_freddy = '1a'
 pos_chica = '1a'
 pos_foxy = '1c'
+stg_foxy = 1
 
 bonnie_level = 0
 chica_level = 0
@@ -54,6 +55,10 @@ bonnie_sprite = pygame.image.load('images/spt_bonnie.png')
 chica_sprite = pygame.image.load('images/spt_chica.png')
 freddy_sprite = pygame.image.load('images/spt_freddy.png')
 foxy_sprite = pygame.image.load('images/spt_foxy.png')
+piratecove1_sprite = pygame.image.load('images/spt_piratecove1.png')
+piratecove2_sprite = pygame.image.load('images/spt_piratecove2.png')
+piratecove3_sprite = pygame.image.load('images/spt_piratecove3.png')
+piratecove4_sprite = pygame.image.load('images/spt_piratecove4.png')
 
 image_gameOver = pygame.image.load('images/gameoverscreen.png')
 
@@ -206,7 +211,7 @@ while True:
         som_menu.stop()
 
         relogio.tick(1)
-        tempo_atual = pygame.time.get_ticks() // 1000  # Tempo em segundos
+        tempo_atual = pygame.time.get_ticks() // 1000
         contador_segundos: int = tempo_atual - tempo_inicial
 
         if contador_segundos % 5 == 0:
@@ -363,8 +368,15 @@ while True:
         elif pos_bonnie == '2b':
             tela.blit(bonnie_sprite, (670 - 37, 564 - 55))
 
-        if pos_foxy == '1c':
-            tela.blit(foxy_sprite, (503 - 37, 309 - 37))
+        if stg_foxy == 1:
+            tela.blit(piratecove1_sprite, (503 - 37, 309 - 37))
+        elif stg_foxy == 2:
+            tela.blit(piratecove2_sprite, (503 - 37, 309 - 37))
+        elif stg_foxy == 3:
+            tela.blit(piratecove3_sprite, (503 - 37, 309 - 37))
+        elif stg_foxy == 4:
+            tela.blit(piratecove4_sprite, (503 - 37, 309 - 37))
+
 
 
         numero_sort = fonte.render("Número: " + str(sorteio), True, (255, 255, 255))
