@@ -380,7 +380,7 @@ while True:
             mostrar_horas = fonte.render('5 AM', True, (255, 255, 255))
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
         elif horario == 6:
-            cena = 1
+            cena = 6
 
         if pos_chica == '1a':
             tela.blit(chica_sprite, (779 - 37, 80 - 37))
