@@ -15,7 +15,9 @@ pygame.display.set_caption('FNAF')
 caminho_fonte = "fonts/pixChicago.ttf"
 fonte = pygame.font.Font(caminho_fonte, 32)
 fundo = pygame.image.load("images/Background.png")
-fundo_menu = pygame.image.load('images/Menu Background.gif')
+fundo_menu1 = pygame.image.load('images/background_menu1.png')
+fundo_menu2 = pygame.image.load('images/background_menu2.png')
+fundo_menu3 = pygame.image.load('images/background_menu3.png')
 
 relogio = pygame.time.Clock()
 tempo_inicial = pygame.time.get_ticks() // 1000
@@ -173,7 +175,17 @@ while True:
 
     if cena == 1:
 
-        tela.blit(fundo_menu, (0, 0))
+        relogio.tick(1)
+        tempo_atual = pygame.time.get_ticks() // 1000
+        contador_segundos: int = tempo_atual - tempo_inicial
+
+        if contador_segundos % 5 == 0:
+            tela.blit(fundo_menu2, (0, 0))
+        elif contador_segundos % 6 == 0:
+            tela.blit(fundo_menu3, (0, 0))
+        else:
+            tela.blit(fundo_menu1, (0, 0))
+
         som_menu.play()
 
         titulo = fonte.render("FNAF AI", True, (255, 255, 255))
