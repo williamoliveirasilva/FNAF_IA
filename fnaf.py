@@ -427,8 +427,13 @@ while True:
                 else:
                     stg_foxy = 0
 
+        if contador_segundos % 1 == 0:
+            if porta_esquerda:
+                nivel_energia -= 1
+            if porta_direita:
+                nivel_energia -= 1
 
-        numero_sort = fonte.render("Número: " + str(sorteio), True, (255, 255, 255))
+        numero_sort = fonte.render("Energia: " + str(nivel_energia)+"%", True, (255, 255, 255))
         tela.blit(numero_sort, (pos_horaX, 240))
         nivel_bonnie = fonte.render("Bonnie: " + str(bonnie_level), True, (255, 255, 255))
         tela.blit(nivel_bonnie, (pos_horaX, 240 + 60))
