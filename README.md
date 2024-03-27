@@ -38,11 +38,18 @@ Os incrementos são dados por:
 | 4 AM  | +1   | +1  | +1 | +0     |
 | 5 AM    | +0     | +0    | +0   | +0     |
 
+### Formas de Ataque dos Animatrônicos 
+
+#### Bonnie 
+
+
 ### Duração das noites
 
 No FNAF, cada hora dura 1 minuto e 26 segundos no mundo real. Desta forma, cada noite tem uma duração exata de 8 minutos e 36 segundos.
 Em versões antigas para mobile, esses valores eram menores, mas aqui foi levado em consideração o tempo padrão.
 Ao chegar às 6 da manhã, o jogo é imediatamente finalizado, sendo vitória para o jogador.
+
+### Energia, Portas e Luzes 
 
 > Este README está em processo de desenvolvimento e ainda não está finalizado. Novas seções e informações serão adicionadas em breve.
 
