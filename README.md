@@ -10,6 +10,8 @@ Este é um projeto em desenvolvimento de uma inteligência artificial (IA) basea
 ## Sobre  Projeto
 O objetivo deste projeto é replicar o comportamento da IA do jogo Five Nights at Freddy's 1 em um ambiente controlado. Isso inclui a criação de personagens animatrônicos que se movem de forma autônoma e tentam atacar o jogador, seguindo padrões de comportamento predefinidos.
 
+## Mecânicas básicas do FNAF
+
 ### Funcionamento dos Animatrônicos
 Os animatrônicos se movem com base em um sorteio de 1 a 20. Se o `valor atribuído ao animatrônico` for superior ao `número sorteado`, ele será capaz de se movimentar.
 Os níveis dos animatrônicos são definidos pelo número da noite, e são incrementados ao passar das horas (no jogo).
@@ -36,6 +38,18 @@ Os incrementos são dados por:
 | 4 AM  | +1   | +1  | +1 | +0     |
 | 5 AM    | +0     | +0    | +0   | +0     |
 
+### Caminho e Ataque 
+
+#### Bonnie 
+
+
+### Duração das noites
+
+No FNAF, cada hora dura 1 minuto e 26 segundos no mundo real. Desta forma, cada noite tem uma duração exata de 8 minutos e 36 segundos.
+Em versões antigas para mobile, esses valores eram menores, mas aqui foi levado em consideração o tempo padrão.
+Ao chegar às 6 da manhã, o jogo é imediatamente finalizado, sendo vitória para o jogador.
+
+### Energia, Portas e Luzes 
 
 > Este README está em processo de desenvolvimento e ainda não está finalizado. Novas seções e informações serão adicionadas em breve.
 
