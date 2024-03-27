@@ -38,7 +38,7 @@ Os incrementos são dados por:
 | 4 AM  | +1   | +1  | +1 | +0     |
 | 5 AM    | +0     | +0    | +0   | +0     |
 
-### Formas de Ataque dos Animatrônicos 
+### Caminho e Ataque 
 
 #### Bonnie 
 
