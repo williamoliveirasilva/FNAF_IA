@@ -71,6 +71,9 @@ som_gameOver = pygame.mixer.Sound('sounds/Static.ogg')
 
 nivel_energia = 100
 
+camera_1c = False
+
+
 def reset_game():
     porta_direita = False
     porta_direita = False
@@ -229,6 +232,18 @@ while True:
         tempo_atual = pygame.time.get_ticks() // 1000
         contador_segundos: int = tempo_atual - tempo_inicial
 
+        if contador_segundos % 3 == 0:
+            numero_sorteado = random.randint(1, 20)
+
+            if foxy_level >= numero_sorteado:
+                if not camera_1c:
+                    if stg_foxy == '1':
+                        stg_foxy = '2'
+                    elif stg_foxy == '2':
+                        stg_foxy = '3'
+                    elif stg_foxy == '3':
+                        stg_foxy = '4'
+
         if contador_segundos % 5 == 0:
             numero_sorteado = random.randint(1, 20)
             sorteio = numero_sorteado
@@ -329,7 +344,6 @@ while True:
             if contador_segundos % 3:
                 nivel_energia -= 1
 
-
         if horario == 0:
             mostrar_horas = fonte.render('12 AM', True, (255, 255, 255))
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
@@ -368,10 +382,10 @@ while True:
             cena = 1
 
         if pos_chica == '1a':
-            tela.blit(chica_sprite, (779-37, 80-37))
+            tela.blit(chica_sprite, (779 - 37, 80 - 37))
 
         elif pos_chica == '1b':
-            tela.blit(chica_sprite, (903-37, 237-37))
+            tela.blit(chica_sprite, (903 - 37, 237 - 37))
         elif pos_chica == '7':
             tela.blit(chica_sprite, (1074 - 37, 236 - 37))
         elif pos_chica == '6':
@@ -385,7 +399,7 @@ while True:
             tela.blit(freddy_sprite, (839 - 37, 80 - 37))
 
         if pos_bonnie == '1a':
-            tela.blit(bonnie_sprite, (719-37, 80-55))
+            tela.blit(bonnie_sprite, (719 - 37, 80 - 55))
         elif pos_bonnie == '1b':
             tela.blit(bonnie_sprite, (651 - 37, 237 - 55))
         elif pos_bonnie == '5':
@@ -406,6 +420,12 @@ while True:
         elif stg_foxy == 4:
             tela.blit(piratecove4_sprite, (503 - 37, 309 - 37))
 
+        if stg_foxy == 4:
+            if contador_segundos % 25 == 0:
+                if not porta_esquerda:
+                    cena = 3
+                else:
+                    stg_foxy = 0
 
 
         numero_sort = fonte.render("Número: " + str(sorteio), True, (255, 255, 255))
@@ -432,6 +452,5 @@ while True:
         game_over = fonte.render("Precione qualquer tecla", True, (255, 255, 255))
         tela.blit(game_over, (60, 400))
         som_gameOver.play()
-
 
     pygame.display.update()
