@@ -31,7 +31,7 @@ pos_bonnie = '1a'
 pos_freddy = '1a'
 pos_chica = '1a'
 pos_foxy = '1c'
-stg_foxy = 1
+stg_foxy = '1'
 
 bonnie_level = 0
 chica_level = 0
@@ -84,6 +84,7 @@ def reset_game():
     pos_freddy = '1a'
     pos_chica = '1a'
     pos_foxy = '1c'
+    stg_foxy = '1'
     tempo_inicial = pygame.time.get_ticks() // 1000
     contador_segundos = 0
     horario = 0
