@@ -412,21 +412,18 @@ while True:
         elif pos_bonnie == '2b':
             tela.blit(bonnie_sprite, (670 - 37, 564 - 55))
 
-        if stg_foxy == 1:
+        if stg_foxy == '1':
             tela.blit(piratecove1_sprite, (503 - 37, 309 - 37))
-        elif stg_foxy == 2:
+        elif stg_foxy == '2':
             tela.blit(piratecove2_sprite, (503 - 37, 309 - 37))
-        elif stg_foxy == 3:
+        elif stg_foxy == '3':
             tela.blit(piratecove3_sprite, (503 - 37, 309 - 37))
-        elif stg_foxy == 4:
-            tela.blit(piratecove4_sprite, (503 - 37, 309 - 37))
-
-        if stg_foxy == 4:
+        elif stg_foxy == '4':
             if contador_segundos % 25 == 0:
                 if not porta_esquerda:
                     cena = 3
                 else:
-                    stg_foxy = 0
+                    stg_foxy = '0'
 
         if contador_segundos % 1 == 0:
             if porta_esquerda:
