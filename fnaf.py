@@ -419,6 +419,7 @@ while True:
         elif stg_foxy == '3':
             tela.blit(piratecove3_sprite, (503 - 37, 309 - 37))
         elif stg_foxy == '4':
+            tela.blit(piratecove4_sprite, (503 - 37, 309 - 37))
             if contador_segundos % 25 == 0:
                 if not porta_esquerda:
                     cena = 3
