@@ -72,6 +72,25 @@ som_gameOver = pygame.mixer.Sound('sounds/Static.ogg')
 nivel_energia = 100
 
 camera_1c = False
+def desenha_botao():
+    botao_esquerdo = pygame.Rect(543, 624, 31, 58)
+    botao_direito = pygame.Rect(1021, 624, 31, 58)
+    botao_base_esquerda = pygame.Rect(540, 619, 37, 69)
+    botao_base_direita = pygame.Rect(1018, 619, 37, 69)
+
+    pygame.draw.rect(tela, (155, 155, 155), botao_base_esquerda)
+    pygame.draw.rect(tela, (155, 155, 155), botao_base_direita)
+
+    if porta_esquerda:
+        pygame.draw.rect(tela, (0, 255, 0), botao_esquerdo)
+    else:
+        pygame.draw.rect(tela, (255, 0, 0), botao_esquerdo)
+
+    if porta_direita:
+        pygame.draw.rect(tela, (0, 255, 0), botao_direito)
+    else:
+        pygame.draw.rect(tela, (255, 0, 0), botao_direito)
+
 
 
 def reset_game():
@@ -98,6 +117,7 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             exit()
+
         if cena == 1:
             if event.type == KEYDOWN:
                 if event.key == K_RETURN:
@@ -226,6 +246,8 @@ while True:
             tela.blit(seta, (255, 465))
 
     elif cena == 2:
+
+        desenha_botao()
 
         som_menu.stop()
 
@@ -442,6 +464,8 @@ while True:
         tela.blit(nivel_foxy, (pos_horaX, 360 + 60))
         nivel_freddy = fonte.render("Freddy: " + str(freddy_level), True, (255, 255, 255))
         tela.blit(nivel_freddy, (pos_horaX, 420 + 60))
+
+        desenha_botao()
 
     elif cena == 3:
         nivel_foxy = 0
