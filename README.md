@@ -48,6 +48,8 @@ Ao chegar às 6 da manhã, o jogo é imediatamente finalizado, sendo vitória pa
 
 ### Energia, Portas e Luzes 
 
+###
+
 > Este README está em processo de desenvolvimento e ainda não está finalizado. Novas seções e informações serão adicionadas em breve.
 
 
