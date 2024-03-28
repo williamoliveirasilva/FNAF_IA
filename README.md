@@ -40,9 +40,6 @@ Os incrementos são dados por:
 
 ### Caminho e Ataque 
 
-#### Bonnie 
-
-
 ### Duração das noites
 
 No FNAF, cada hora dura 1 minuto e 26 segundos no mundo real. Desta forma, cada noite tem uma duração exata de 8 minutos e 36 segundos.
