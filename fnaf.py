@@ -68,6 +68,7 @@ som_movimentoBonnie = pygame.mixer.Sound('sounds/BonnieChicamoving.ogg')
 som_menu = pygame.mixer.Sound('sounds/FNAFMenumusic.ogg')
 som_chicaCozinha = pygame.mixer.Sound('sounds/ChicaKitchen.ogg')
 som_gameOver = pygame.mixer.Sound('sounds/Static.ogg')
+som_porta = pygame.mixer.Sound('sounds/PORTA.ogg')
 
 nivel_energia = 100
 
@@ -113,99 +114,98 @@ def reset_game():
 
 while True:
 
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            pygame.quit()
-            exit()
-
-        if cena == 1:
-            if event.type == KEYDOWN:
-                if event.key == K_RETURN:
-                    if pos_seta_menu == 1:
-                        bonnie_level = 0
-                        chica_level = 0
-                        foxy_level = 0
-                        freddy_level = 0
-                        num_noite = 1
-                        reset_game()
-                        cena = 2
-                    elif pos_seta_menu == 2:
-                        bonnie_level = 3
-                        chica_level = 1
-                        foxy_level = 1
-                        freddy_level = 0
-                        num_noite = 2
-                        reset_game()
-                        cena = 2
-                    elif pos_seta_menu == 3:
-                        bonnie_level = 0
-                        chica_level = 5
-                        foxy_level = 2
-                        freddy_level = 1
-                        num_noite = 3
-                        cena = 2
-                        reset_game()
-                    elif pos_seta_menu == 4:
-                        bonnie_level = 2
-                        chica_level = 4
-                        foxy_level = 6
-                        nivel_freddy = random.randint(1, 2)
-                        if nivel_freddy == 1:
-                            nivel_freddy = 1
-                        else:
-                            nivel_freddy = 2
-                        num_noite = 4
-                        reset_game()
-                        cena = 2
-                    elif pos_seta_menu == 5:
-                        bonnie_level = 5
-                        chica_level = 7
-                        foxy_level = 5
-                        freddy_level = 3
-                        num_noite = 5
-                        reset_game()
-                        cena = 2
-                    elif pos_seta_menu == 6:
-                        bonnie_level = 10
-                        chica_level = 12
-                        foxy_level = 16
-                        freddy_level = 4
-                        num_noite = 6
-                        reset_game()
-                        cena = 2
-                elif event.key == K_UP:
-                    if pos_seta_menu == 1:
-                        pos_seta_menu = 6
-                    elif pos_seta_menu == 2:
-                        pos_seta_menu = 1
-                    elif pos_seta_menu == 3:
-                        pos_seta_menu = 2
-                    elif pos_seta_menu == 4:
-                        pos_seta_menu = 3
-                    elif pos_seta_menu == 5:
-                        pos_seta_menu = 4
-                    elif pos_seta_menu == 6:
-                        pos_seta_menu = 5
-                elif event.key == K_DOWN:
-                    if pos_seta_menu == 1:
-                        pos_seta_menu = 2
-                    elif pos_seta_menu == 2:
-                        pos_seta_menu = 3
-                    elif pos_seta_menu == 3:
-                        pos_seta_menu = 4
-                    elif pos_seta_menu == 4:
-                        pos_seta_menu = 5
-                    elif pos_seta_menu == 5:
-                        pos_seta_menu = 6
-                    elif pos_seta_menu == 6:
-                        pos_seta_menu = 1
-
     if cena == 1:
 
         relogio.tick(1)
         tempo_atual = pygame.time.get_ticks() // 1000
         contador_segundos: int = tempo_atual - tempo_inicial
 
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                exit()
+
+            if cena == 1:
+                if event.type == KEYDOWN:
+                    if event.key == K_RETURN:
+                        if pos_seta_menu == 1:
+                            bonnie_level = 0
+                            chica_level = 0
+                            foxy_level = 0
+                            freddy_level = 0
+                            num_noite = 1
+                            reset_game()
+                            cena = 2
+                        elif pos_seta_menu == 2:
+                            bonnie_level = 3
+                            chica_level = 1
+                            foxy_level = 1
+                            freddy_level = 0
+                            num_noite = 2
+                            reset_game()
+                            cena = 2
+                        elif pos_seta_menu == 3:
+                            bonnie_level = 0
+                            chica_level = 5
+                            foxy_level = 2
+                            freddy_level = 1
+                            num_noite = 3
+                            cena = 2
+                            reset_game()
+                        elif pos_seta_menu == 4:
+                            bonnie_level = 2
+                            chica_level = 4
+                            foxy_level = 6
+                            nivel_freddy = random.randint(1, 2)
+                            if nivel_freddy == 1:
+                                nivel_freddy = 1
+                            else:
+                                nivel_freddy = 2
+                            num_noite = 4
+                            reset_game()
+                            cena = 2
+                        elif pos_seta_menu == 5:
+                            bonnie_level = 5
+                            chica_level = 7
+                            foxy_level = 5
+                            freddy_level = 3
+                            num_noite = 5
+                            reset_game()
+                            cena = 2
+                        elif pos_seta_menu == 6:
+                            bonnie_level = 10
+                            chica_level = 12
+                            foxy_level = 16
+                            freddy_level = 4
+                            num_noite = 6
+                            reset_game()
+                            cena = 2
+                    elif event.key == K_UP:
+                        if pos_seta_menu == 1:
+                            pos_seta_menu = 6
+                        elif pos_seta_menu == 2:
+                            pos_seta_menu = 1
+                        elif pos_seta_menu == 3:
+                            pos_seta_menu = 2
+                        elif pos_seta_menu == 4:
+                            pos_seta_menu = 3
+                        elif pos_seta_menu == 5:
+                            pos_seta_menu = 4
+                        elif pos_seta_menu == 6:
+                            pos_seta_menu = 5
+                    elif event.key == K_DOWN:
+                        if pos_seta_menu == 1:
+                            pos_seta_menu = 2
+                        elif pos_seta_menu == 2:
+                            pos_seta_menu = 3
+                        elif pos_seta_menu == 3:
+                            pos_seta_menu = 4
+                        elif pos_seta_menu == 4:
+                            pos_seta_menu = 5
+                        elif pos_seta_menu == 5:
+                            pos_seta_menu = 6
+                        elif pos_seta_menu == 6:
+                            pos_seta_menu = 1
         if contador_segundos % 5 == 0:
             tela.blit(fundo_menu2, (0, 0))
         elif contador_segundos % 6 == 0:
@@ -247,13 +247,29 @@ while True:
 
     elif cena == 2:
 
-        desenha_botao()
-
         som_menu.stop()
 
         relogio.tick(1)
         tempo_atual = pygame.time.get_ticks() // 1000
         contador_segundos: int = tempo_atual - tempo_inicial
+
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                exit()
+            if event.type == KEYDOWN:
+                if event.key == K_LEFT:
+                    som_porta.play()
+                    if porta_esquerda:
+                        porta_esquerda = False
+                    else:
+                        porta_esquerda = True
+                if event.key == K_RIGHT:
+                    som_porta.play()
+                    if porta_direita:
+                        porta_direita = False
+                    else:
+                        porta_direita = True
 
         if contador_segundos % 3 == 0:
             numero_sorteado = random.randint(1, 20)
