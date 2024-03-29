@@ -92,6 +92,15 @@ def desenha_botao():
     else:
         pygame.draw.rect(tela, (255, 0, 0), botao_direito)
 
+def desenha_portas():
+    desenho_porta_direita = pygame.Rect(840, 591, 21, 16)
+    desenho_porta_esquerda = pygame.Rect(734, 591, 21, 16)
+    if porta_direita:
+        pygame.draw.rect(tela, (155, 155, 155), desenho_porta_direita)
+
+    if porta_esquerda:
+        pygame.draw.rect(tela, (155, 155, 155), desenho_porta_esquerda)
+
 
 
 def reset_game():
@@ -482,6 +491,7 @@ while True:
         tela.blit(nivel_freddy, (pos_horaX, 420 + 60))
 
         desenha_botao()
+        desenha_portas()
 
     elif cena == 3:
         nivel_foxy = 0
