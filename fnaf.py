@@ -120,6 +120,15 @@ def reset_game():
     nivel_energia = 100
     return
 
+def mostrar_nivel():
+    nivel_bonnie = fonte.render("Bonnie: " + str(bonnie_level), True, (255, 255, 255))
+    tela.blit(nivel_bonnie, (pos_horaX, 240 + 60))
+    nivel_chica = fonte.render("Chica: " + str(chica_level), True, (255, 255, 255))
+    tela.blit(nivel_chica, (pos_horaX, 300 + 60))
+    nivel_foxy = fonte.render("Foxy: " + str(foxy_level), True, (255, 255, 255))
+    tela.blit(nivel_foxy, (pos_horaX, 360 + 60))
+    nivel_freddy = fonte.render("Freddy: " + str(freddy_level), True, (255, 255, 255))
+    tela.blit(nivel_freddy, (pos_horaX, 420 + 60))
 
 while True:
 
@@ -481,17 +490,10 @@ while True:
 
         numero_sort = fonte.render("Energia: " + str(nivel_energia)+"%", True, (255, 255, 255))
         tela.blit(numero_sort, (pos_horaX, 240))
-        nivel_bonnie = fonte.render("Bonnie: " + str(bonnie_level), True, (255, 255, 255))
-        tela.blit(nivel_bonnie, (pos_horaX, 240 + 60))
-        nivel_chica = fonte.render("Chica: " + str(chica_level), True, (255, 255, 255))
-        tela.blit(nivel_chica, (pos_horaX, 300 + 60))
-        nivel_foxy = fonte.render("Foxy: " + str(foxy_level), True, (255, 255, 255))
-        tela.blit(nivel_foxy, (pos_horaX, 360 + 60))
-        nivel_freddy = fonte.render("Freddy: " + str(freddy_level), True, (255, 255, 255))
-        tela.blit(nivel_freddy, (pos_horaX, 420 + 60))
 
         desenha_botao()
         desenha_portas()
+        #mostrar_nivel()
 
     elif cena == 3:
         nivel_foxy = 0
