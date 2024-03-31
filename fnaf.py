@@ -321,7 +321,7 @@ while True:
                     pos_bonnie = '1b'
                 elif pos_bonnie == '2b':
                     if porta_esquerda:
-                        pos_bonnie = '2a'
+                        pos_bonnie = '1b'
                     else:
                         cena = 3
 
@@ -352,7 +352,7 @@ while True:
                     if not porta_direita:
                         cena = 3
                     else:
-                        pos_chica = '4a'
+                        pos_chica = '1b'
 
         if contador_segundos % 3 == 0:
             numero_sorteado = random.randint(1, 20)
