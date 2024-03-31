@@ -69,10 +69,13 @@ som_menu = pygame.mixer.Sound('sounds/FNAFMenumusic.ogg')
 som_chicaCozinha = pygame.mixer.Sound('sounds/ChicaKitchen.ogg')
 som_gameOver = pygame.mixer.Sound('sounds/Static.ogg')
 som_porta = pygame.mixer.Sound('sounds/PORTA.ogg')
+som_vitoria = pygame.mixer.Sound('sounds/Chimes_2.ogg')
 
 nivel_energia = 100
 
 camera_1c = False
+
+
 def desenha_botao():
     botao_esquerdo = pygame.Rect(543, 624, 31, 58)
     botao_direito = pygame.Rect(1021, 624, 31, 58)
@@ -92,6 +95,7 @@ def desenha_botao():
     else:
         pygame.draw.rect(tela, (255, 0, 0), botao_direito)
 
+
 def desenha_portas():
     desenho_porta_direita = pygame.Rect(840, 591, 21, 16)
     desenho_porta_esquerda = pygame.Rect(734, 591, 21, 16)
@@ -100,7 +104,6 @@ def desenha_portas():
 
     if porta_esquerda:
         pygame.draw.rect(tela, (155, 155, 155), desenho_porta_esquerda)
-
 
 
 def reset_game():
@@ -120,6 +123,7 @@ def reset_game():
     nivel_energia = 100
     return
 
+
 def mostrar_nivel():
     nivel_bonnie = fonte.render("Bonnie: " + str(bonnie_level), True, (255, 255, 255))
     tela.blit(nivel_bonnie, (pos_horaX, 240 + 60))
@@ -129,6 +133,19 @@ def mostrar_nivel():
     tela.blit(nivel_foxy, (pos_horaX, 360 + 60))
     nivel_freddy = fonte.render("Freddy: " + str(freddy_level), True, (255, 255, 255))
     tela.blit(nivel_freddy, (pos_horaX, 420 + 60))
+
+
+def vitoria():
+    cena = 4
+    bonnie_level = 0
+    chica_level = 0
+    foxy_level = 0
+    freddy_level = 0
+    stg_foxy = '1'
+    pos_chica = '1a'
+    pos_bonnie = '1a'
+    pos_freddy = '1a'
+
 
 while True:
 
@@ -276,6 +293,8 @@ while True:
                 pygame.quit()
                 exit()
             if event.type == KEYDOWN:
+                if event.key == K_f:
+                    vitoria()
                 if event.key == K_LEFT:
                     som_porta.play()
                     if porta_esquerda:
@@ -401,6 +420,16 @@ while True:
             if contador_segundos % 3 == 0:
                 nivel_energia -= 1
 
+        if nivel_energia == 0:
+            bonnie_level = 0
+            chica_level = 0
+            foxy_level = 0
+            freddy_level = 0
+            stg_foxy = '1'
+            pos_chica = '1a'
+            pos_bonnie = '1a'
+            pos_freddy = '1a'
+
         if horario == 0:
             mostrar_horas = fonte.render('12 AM', True, (255, 255, 255))
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
@@ -436,7 +465,7 @@ while True:
             mostrar_horas = fonte.render('5 AM', True, (255, 255, 255))
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
         elif horario == 6:
-            cena = 6
+            vitoria()
 
         if pos_chica == '1a':
             tela.blit(chica_sprite, (779 - 37, 80 - 37))
@@ -488,12 +517,12 @@ while True:
             if porta_direita:
                 nivel_energia -= 1
 
-        numero_sort = fonte.render("Energia: " + str(nivel_energia)+"%", True, (255, 255, 255))
+        numero_sort = fonte.render("Energia: " + str(nivel_energia) + "%", True, (255, 255, 255))
         tela.blit(numero_sort, (pos_horaX, 240))
 
         desenha_botao()
         desenha_portas()
-        #mostrar_nivel()
+        # mostrar_nivel()
 
     elif cena == 3:
         nivel_foxy = 0
@@ -512,5 +541,6 @@ while True:
     elif cena == 4:
         six_am = fonte.render("6 AM", True, (255, 255, 255))
         tela.blit(six_am, (60, 350))
+        som_vitoria.play()
 
     pygame.display.update()
