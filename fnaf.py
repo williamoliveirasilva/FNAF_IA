@@ -471,7 +471,7 @@ while True:
                 if not porta_esquerda:
                     cena = 3
                 else:
-                    stg_foxy = '0'
+                    stg_foxy = '1'
 
         if contador_segundos % 1 == 0:
             if porta_esquerda:
