@@ -135,8 +135,7 @@ def mostrar_nivel():
     tela.blit(nivel_freddy, (pos_horaX, 420 + 60))
 
 
-def vitoria():
-    cena = 4
+def noite_cumprida():
     bonnie_level = 0
     chica_level = 0
     foxy_level = 0
@@ -145,6 +144,8 @@ def vitoria():
     pos_chica = '1a'
     pos_bonnie = '1a'
     pos_freddy = '1a'
+    cena = 4
+
 
 
 while True:
@@ -294,7 +295,8 @@ while True:
                 exit()
             if event.type == KEYDOWN:
                 if event.key == K_f:
-                    vitoria()
+                    noite_cumprida()
+
                 if event.key == K_LEFT:
                     som_porta.play()
                     if porta_esquerda:
@@ -465,7 +467,7 @@ while True:
             mostrar_horas = fonte.render('5 AM', True, (255, 255, 255))
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
         elif horario == 6:
-            vitoria()
+            noite_cumprida()
 
         if pos_chica == '1a':
             tela.blit(chica_sprite, (779 - 37, 80 - 37))
@@ -522,7 +524,7 @@ while True:
 
         desenha_botao()
         desenha_portas()
-        # mostrar_nivel()
+        mostrar_nivel()
 
     elif cena == 3:
         nivel_foxy = 0
