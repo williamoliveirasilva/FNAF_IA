@@ -76,7 +76,7 @@ som_semEnergia = pygame.mixer.Sound('sounds/Powerdown.ogg')
 
 som_ambiente.set_volume(0.15)
 
-nivel_energia = 100
+nivel_energia = 1
 
 camera_1c = False
 
@@ -410,6 +410,24 @@ while True:
         elif contador_segundos == 595:
             horario = 6
 
+        if nivel_energia == 0:
+            som_ambiente.stop()
+            bonnie_level = 0
+            chica_level = 0
+            foxy_level = 0
+            freddy_level = 0
+            stg_foxy = '1'
+            pos_chica = '1a'
+            pos_bonnie = '1a'
+            pos_freddy = '1a'
+            som_movimentoBonnie.stop()
+            som_chicaCozinha.stop()
+            som_semEnergia.play()
+            stg_foxy = '0'
+            pos_chica = 'x'
+            pos_bonnie = 'x'
+            pos_freddy = 'x'
+
         if nivel_energia > 0:
             tela.blit(fundo, (0, 0))
         else:
@@ -432,17 +450,7 @@ while True:
                 if contador_segundos % 3 == 0:
                     nivel_energia -= 1
 
-        if nivel_energia == 0:
-            som_ambiente.stop()
-            bonnie_level = 0
-            chica_level = 0
-            foxy_level = 0
-            freddy_level = 0
-            stg_foxy = '1'
-            pos_chica = '1a'
-            pos_bonnie = '1a'
-            pos_freddy = '1a'
-            som_semEnergia.play()
+
 
         if horario == 0:
             mostrar_horas = fonte.render('12 AM', True, (255, 255, 255))
