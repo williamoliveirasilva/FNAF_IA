@@ -76,7 +76,7 @@ som_semEnergia = pygame.mixer.Sound('sounds/Powerdown.ogg')
 
 som_ambiente.set_volume(0.15)
 
-nivel_energia = 10
+nivel_energia = 100
 
 camera_1c = False
 
