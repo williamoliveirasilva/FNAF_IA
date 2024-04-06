@@ -409,18 +409,19 @@ while True:
         mostrar_noite = fonte.render('Noite ' + str(num_noite), True, (255, 255, 255))
         tela.blit(mostrar_noite, (pos_noiteX, pos_noiteY))
 
-        if num_noite == 2:
-            if contador_segundos % 6 == 0:
-                nivel_energia -= 1
-        elif num_noite == 3:
-            if contador_segundos % 5 == 0:
-                nivel_energia -= 1
-        elif num_noite == 4:
-            if contador_segundos % 4 == 0:
-                nivel_energia -= 1
-        elif num_noite == 5 or num_noite == 6:
-            if contador_segundos % 3 == 0:
-                nivel_energia -= 1
+        if nivel_energia > 0:
+            if num_noite == 2:
+                if contador_segundos % 6 == 0:
+                    nivel_energia -= 1
+            elif num_noite == 3:
+                if contador_segundos % 5 == 0:
+                    nivel_energia -= 1
+            elif num_noite == 4:
+                if contador_segundos % 4 == 0:
+                    nivel_energia -= 1
+            elif num_noite == 5 or num_noite == 6:
+                if contador_segundos % 3 == 0:
+                    nivel_energia -= 1
 
         if nivel_energia == 0:
             bonnie_level = 0
@@ -431,6 +432,7 @@ while True:
             pos_chica = '1a'
             pos_bonnie = '1a'
             pos_freddy = '1a'
+            som
 
         if horario == 0:
             mostrar_horas = fonte.render('12 AM', True, (255, 255, 255))
