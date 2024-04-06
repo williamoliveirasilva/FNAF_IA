@@ -10,7 +10,9 @@ tela_largura = 1280
 tela_altura = 720
 
 tela = pygame.display.set_mode((tela_largura, tela_altura))
-pygame.display.set_caption('FNAF')
+pygame.display.set_caption('FNAF: Simulador de IA')
+icone = pygame.image.load('images/spt_goldenfreddy.png')
+pygame.display.set_icon(icone)
 
 caminho_fonte = "fonts/pixChicago.ttf"
 fonte = pygame.font.Font(caminho_fonte, 32)
