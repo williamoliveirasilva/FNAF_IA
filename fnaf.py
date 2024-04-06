@@ -15,6 +15,7 @@ pygame.display.set_caption('FNAF')
 caminho_fonte = "fonts/pixChicago.ttf"
 fonte = pygame.font.Font(caminho_fonte, 32)
 fundo = pygame.image.load("images/Background.png")
+fundo_apagado = pygame.image.load('images/Backgroud_SEnergia.png')
 fundo_menu1 = pygame.image.load('images/background_menu1.png')
 fundo_menu2 = pygame.image.load('images/background_menu2.png')
 fundo_menu3 = pygame.image.load('images/background_menu3.png')
@@ -409,7 +410,10 @@ while True:
         elif contador_segundos == 595:
             horario = 6
 
-        tela.blit(fundo, (0, 0))
+        if nivel_energia > 0:
+            tela.blit(fundo, (0, 0))
+        else:
+            tela.blit(fundo_apagado, (0,0))
 
         mostrar_noite = fonte.render('Noite ' + str(num_noite), True, (255, 255, 255))
         tela.blit(mostrar_noite, (pos_noiteX, pos_noiteY))
