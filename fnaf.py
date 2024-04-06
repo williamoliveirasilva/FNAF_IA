@@ -70,6 +70,9 @@ som_chicaCozinha = pygame.mixer.Sound('sounds/ChicaKitchen.ogg')
 som_gameOver = pygame.mixer.Sound('sounds/Static.ogg')
 som_porta = pygame.mixer.Sound('sounds/PORTA.ogg')
 som_vitoria = pygame.mixer.Sound('sounds/Chimes_2.ogg')
+som_ambiente = pygame.mixer.Sound('sounds/EerieAmbienceLargeSca_MV005.ogg')
+
+som_ambiente.set_volume(0.15)
 
 nivel_energia = 100
 
@@ -151,7 +154,7 @@ def noite_cumprida():
 while True:
 
     if cena == 1:
-
+        som_ambiente.stop()
         relogio.tick(1)
         tempo_atual = pygame.time.get_ticks() // 1000
         contador_segundos: int = tempo_atual - tempo_inicial
@@ -284,6 +287,7 @@ while True:
     elif cena == 2:
 
         som_menu.stop()
+        som_ambiente.play()
 
         relogio.tick(1)
         tempo_atual = pygame.time.get_ticks() // 1000
@@ -529,6 +533,7 @@ while True:
         mostrar_nivel()
 
     elif cena == 3:
+        som_ambiente.stop()
         nivel_foxy = 0
         nivel_chica = 0
         nivel_bonnie = 0
@@ -543,6 +548,7 @@ while True:
         som_gameOver.play()
 
     elif cena == 4:
+        som_ambiente.stop()
         six_am = fonte.render("6 AM", True, (255, 255, 255))
         tela.blit(six_am, (60, 350))
         som_vitoria.play()
