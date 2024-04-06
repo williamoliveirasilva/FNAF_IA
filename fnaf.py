@@ -71,6 +71,7 @@ som_gameOver = pygame.mixer.Sound('sounds/Static.ogg')
 som_porta = pygame.mixer.Sound('sounds/PORTA.ogg')
 som_vitoria = pygame.mixer.Sound('sounds/Chimes_2.ogg')
 som_ambiente = pygame.mixer.Sound('sounds/EerieAmbienceLargeSca_MV005.ogg')
+som_semEnergia = pygame.mixer.Sound('sounds/Powerdown.ogg')
 
 som_ambiente.set_volume(0.15)
 
@@ -428,6 +429,7 @@ while True:
                     nivel_energia -= 1
 
         if nivel_energia == 0:
+            som_ambiente.stop()
             bonnie_level = 0
             chica_level = 0
             foxy_level = 0
@@ -436,7 +438,7 @@ while True:
             pos_chica = '1a'
             pos_bonnie = '1a'
             pos_freddy = '1a'
-            som
+            som_semEnergia.play()
 
         if horario == 0:
             mostrar_horas = fonte.render('12 AM', True, (255, 255, 255))
