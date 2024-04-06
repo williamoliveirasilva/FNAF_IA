@@ -76,7 +76,7 @@ som_semEnergia = pygame.mixer.Sound('sounds/Powerdown.ogg')
 
 som_ambiente.set_volume(0.15)
 
-nivel_energia = 1
+nivel_energia = 10
 
 camera_1c = False
 
@@ -102,13 +102,14 @@ def desenha_botao():
 
 
 def desenha_portas():
-    desenho_porta_direita = pygame.Rect(840, 591, 21, 16)
-    desenho_porta_esquerda = pygame.Rect(734, 591, 21, 16)
-    if porta_direita:
-        pygame.draw.rect(tela, (155, 155, 155), desenho_porta_direita)
+    if nivel_energia > 0:
+        desenho_porta_direita = pygame.Rect(840, 591, 21, 16)
+        desenho_porta_esquerda = pygame.Rect(734, 591, 21, 16)
+        if porta_direita:
+            pygame.draw.rect(tela, (155, 155, 155), desenho_porta_direita)
 
-    if porta_esquerda:
-        pygame.draw.rect(tela, (155, 155, 155), desenho_porta_esquerda)
+        if porta_esquerda:
+            pygame.draw.rect(tela, (155, 155, 155), desenho_porta_esquerda)
 
 
 def reset_game():
@@ -304,17 +305,19 @@ while True:
                     noite_cumprida()
 
                 if event.key == K_LEFT:
-                    som_porta.play()
-                    if porta_esquerda:
-                        porta_esquerda = False
-                    else:
-                        porta_esquerda = True
+                    if nivel_energia > 0:
+                        som_porta.play()
+                        if porta_esquerda:
+                            porta_esquerda = False
+                        else:
+                            porta_esquerda = True
                 if event.key == K_RIGHT:
-                    som_porta.play()
-                    if porta_direita:
-                        porta_direita = False
-                    else:
-                        porta_direita = True
+                    if nivel_energia > 0:
+                        som_porta.play()
+                        if porta_direita:
+                            porta_direita = False
+                        else:
+                            porta_direita = True
 
         if contador_segundos % 3 == 0:
             numero_sorteado = random.randint(1, 20)
@@ -410,7 +413,7 @@ while True:
         elif contador_segundos == 595:
             horario = 6
 
-        if nivel_energia == 0:
+        if nivel_energia < 1:
             som_ambiente.stop()
             bonnie_level = 0
             chica_level = 0
@@ -427,6 +430,8 @@ while True:
             pos_chica = 'x'
             pos_bonnie = 'x'
             pos_freddy = 'x'
+            porta_esquerda = False
+            porta_direita = False
 
         if nivel_energia > 0:
             tela.blit(fundo, (0, 0))
