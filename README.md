@@ -39,6 +39,7 @@ Os incrementos são dados por:
 | 5 AM    | +0     | +0    | +0   | +0     |
 
 ### Caminho e Ataque 
+> Em produção
 
 ### Duração das noites
 
@@ -47,7 +48,7 @@ Em versões antigas para mobile, esses valores eram menores, mas aqui foi levado
 Ao chegar às 6 da manhã, o jogo é imediatamente finalizado, sendo vitória para o jogador.
 
 ### Energia, Portas e Luzes 
-
+> Em produção
 
 > Este README está em processo de desenvolvimento e ainda não está finalizado. Novas seções e informações serão adicionadas em breve.
 
