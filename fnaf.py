@@ -460,8 +460,6 @@ while True:
                 if contador_segundos % 3 == 0:
                     nivel_energia -= 1
 
-
-
         if horario == 0:
             mostrar_horas = fonte.render('12 AM', True, (255, 255, 255))
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
