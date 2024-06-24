@@ -154,6 +154,21 @@ def noite_cumprida():
     pos_freddy = '1a'
     cena = 4
 
+def draw_menu_text():
+    titulo = fonte.render("FNAF AI", True, (255, 255, 255))
+    tela.blit(titulo, (65, 65))
+    noite_1 = fonte.render("Noite 1", True, (255, 255, 255))
+    tela.blit(noite_1, (65, 165))
+    noite_2 = fonte.render("Noite 2", True, (255, 255, 255))
+    tela.blit(noite_2, (65, 225))
+    noite_3 = fonte.render("Noite 3", True, (255, 255, 255))
+    tela.blit(noite_3, (65, 285))
+    noite_4 = fonte.render("Noite 4", True, (255, 255, 255))
+    tela.blit(noite_4, (65, 345))
+    noite_5 = fonte.render("Noite 5", True, (255, 255, 255))
+    tela.blit(noite_5, (65, 405))
+    noite_6 = fonte.render("Noite 6", True, (255, 255, 255))
+    tela.blit(noite_6, (65, 465))
 
 
 while True:
@@ -259,21 +274,7 @@ while True:
 
         som_menu.play()
 
-        titulo = fonte.render("FNAF AI", True, (255, 255, 255))
-        tela.blit(titulo, (65, 65))
-        noite_1 = fonte.render("Noite 1", True, (255, 255, 255))
-        tela.blit(noite_1, (65, 165))
-        noite_2 = fonte.render("Noite 2", True, (255, 255, 255))
-        tela.blit(noite_2, (65, 225))
-        noite_3 = fonte.render("Noite 3", True, (255, 255, 255))
-        tela.blit(noite_3, (65, 285))
-        noite_4 = fonte.render("Noite 4", True, (255, 255, 255))
-        tela.blit(noite_4, (65, 345))
-        noite_5 = fonte.render("Noite 5", True, (255, 255, 255))
-        tela.blit(noite_5, (65, 405))
-        noite_6 = fonte.render("Noite 6", True, (255, 255, 255))
-        tela.blit(noite_6, (65, 465))
-
+        draw_menu_text()
         seta = fonte.render("<", True, (255, 255, 255))
 
         if pos_seta_menu == 1:
