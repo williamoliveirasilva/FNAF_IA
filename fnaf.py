@@ -170,6 +170,21 @@ def draw_menu_text():
     noite_6 = fonte.render("Noite 6", True, (255, 255, 255))
     tela.blit(noite_6, (65, 465))
 
+def draw_menu_arrow():
+    seta = fonte.render("<", True, (255, 255, 255))
+
+    if pos_seta_menu == 1:
+        tela.blit(seta, (255, 165))
+    elif pos_seta_menu == 2:
+        tela.blit(seta, (255, 225))
+    elif pos_seta_menu == 3:
+        tela.blit(seta, (255, 285))
+    elif pos_seta_menu == 4:
+        tela.blit(seta, (255, 345))
+    elif pos_seta_menu == 5:
+        tela.blit(seta, (255, 405))
+    elif pos_seta_menu == 6:
+        tela.blit(seta, (255, 465))
 
 while True:
 
@@ -275,20 +290,8 @@ while True:
         som_menu.play()
 
         draw_menu_text()
-        seta = fonte.render("<", True, (255, 255, 255))
+        draw_menu_arrow()
 
-        if pos_seta_menu == 1:
-            tela.blit(seta, (255, 165))
-        elif pos_seta_menu == 2:
-            tela.blit(seta, (255, 225))
-        elif pos_seta_menu == 3:
-            tela.blit(seta, (255, 285))
-        elif pos_seta_menu == 4:
-            tela.blit(seta, (255, 345))
-        elif pos_seta_menu == 5:
-            tela.blit(seta, (255, 405))
-        elif pos_seta_menu == 6:
-            tela.blit(seta, (255, 465))
 
     elif cena == 2:
 
