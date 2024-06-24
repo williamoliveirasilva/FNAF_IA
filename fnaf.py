@@ -292,7 +292,6 @@ while True:
         draw_menu_text()
         draw_menu_arrow()
 
-
     elif cena == 2:
 
         som_menu.stop()
