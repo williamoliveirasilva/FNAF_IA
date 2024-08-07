@@ -32,13 +32,6 @@ num_noite = 1
 
 cena = 1
 
-pos_bonnie = '1a'
-pos_freddy = '1a'
-pos_chica = '1a'
-pos_foxy = '1c'
-stg_foxy = '1'
-
-
 pos_horaX = 30
 pos_horaY = 80
 pos_noiteX = 30
@@ -359,32 +352,32 @@ while True:
 
             if chica.level >= numero_sorteado:
                 som_movimentoBonnie.play()
-                if pos_chica == '1a':
-                    pos_chica = '1b'
-                elif pos_chica == '1b':
+                if chica.position == '1a':
+                    chica.setPosition('1b')
+                elif chica.position == '1b':
                     chica_movimento = random.randint(1, 4)
                     if chica_movimento == 1:
-                        pos_chica = '7'
+                        chica.setPosition('7')
                     elif chica_movimento == 2:
-                        pos_chica = '6'
+                        chica.setPosition('6')
                         som_chicaCozinha.play()
                     elif chica_movimento == 3:
-                        pos_chica = '4a'
-                elif pos_chica == '7':
-                    pos_chica = '1b'
-                elif pos_chica == '6':
-                    pos_chica = '1b'
-                elif pos_chica == '4a':
+                        chica.setPosition('4a')
+                elif chica.position == '7':
+                    chica.setPosition('1b')
+                elif chica.position == '6':
+                    chica.setPosition('1b')
+                elif chica.position == '4a':
                     chica_movimento = random.randint(1, 2)
                     if chica_movimento == 1:
-                        pos_chica = '4b'
+                        chica.setPosition('4b')
                     else:
-                        pos_chica = '1b'
-                elif pos_chica == '4b':
+                        chica.setPosition('1b')
+                elif chica.position == '4b':
                     if not right_door:
                         cena = 3
                     else:
-                        pos_chica = '1b'
+                        chica.setPosition('1b')
 
         if contador_segundos % 3 == 0:
             numero_sorteado = random.randint(1, 20)
