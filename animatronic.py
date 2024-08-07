@@ -1,6 +1,10 @@
-from commons import Walk
-class Animatronic(Walk):
-    def __int__(self, character, position):
-        self.character = character
-        self.position = position
+class Animatronic():
+
+    position = '1a'
+    level = 0
+    def setPosition(self, new_positon):
+        self.position = new_positon
+
+    def printPosition(self):
+        print(self.position)
 
