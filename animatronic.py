@@ -14,6 +14,7 @@ class Animatronic():
 
 class Foxy(Animatronic):
     stage = 0
+    sprite = 1
 
     def setStage(self, new_stage):
         self.stage = new_stage
