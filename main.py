@@ -86,6 +86,7 @@ nivel_energia = 100
 
 camera_1c = False
 
+
 def draw_buttons():
     botao_esquerdo = pygame.Rect(543, 624, 31, 58)
     botao_direito = pygame.Rect(1021, 624, 31, 58)
@@ -122,19 +123,20 @@ chica = Animatronic()
 foxy = Foxy()
 freddy = Animatronic()
 
-def reset_game():
-    porta_direita = False
-    porta_direita = False
-    level_enhanced2 = False
-    level_enhanced3 = False
-    level_enhanced4 = False
-
+def reset_animatronics():
     bonnie.setPosition('1a')
     chica.setPosition('1a')
     foxy.position('1c')
     foxy.setStage('1')
     freddy.setPosition('1a')
 
+def reset_game():
+    porta_direita = False
+    porta_direita = False
+    level_enhanced2 = False
+    level_enhanced3 = False
+    level_enhanced4 = False
+    reset_animatronics()
     tempo_inicial = pygame.time.get_ticks() // 1000
     contador_segundos = 0
     horario = 0
@@ -143,25 +145,18 @@ def reset_game():
 
 
 def mostrar_nivel():
-    nivel_bonnie = fonte.render("Bonnie: " + str(bonnie_level), True, (255, 255, 255))
+    nivel_bonnie = fonte.render("Bonnie: " + str(bonnie.level), True, (255, 255, 255))
     tela.blit(nivel_bonnie, (pos_horaX, 240 + 60))
-    nivel_chica = fonte.render("Chica: " + str(chica_level), True, (255, 255, 255))
+    nivel_chica = fonte.render("Chica: " + str(chica.level), True, (255, 255, 255))
     tela.blit(nivel_chica, (pos_horaX, 300 + 60))
-    nivel_foxy = fonte.render("Foxy: " + str(foxy_level), True, (255, 255, 255))
+    nivel_foxy = fonte.render("Foxy: " + str(foxy.level), True, (255, 255, 255))
     tela.blit(nivel_foxy, (pos_horaX, 360 + 60))
-    nivel_freddy = fonte.render("Freddy: " + str(freddy_level), True, (255, 255, 255))
+    nivel_freddy = fonte.render("Freddy: " + str(freddy.level), True, (255, 255, 255))
     tela.blit(nivel_freddy, (pos_horaX, 420 + 60))
 
 
 def noite_cumprida():
-    bonnie_level = 0
-    chica_level = 0
-    foxy_level = 0
-    freddy_level = 0
-    stg_foxy = '1'
-    pos_chica = '1a'
-    pos_bonnie = '1a'
-    pos_freddy = '1a'
+    reset_animatronics()
     cena = 4
 
 def draw_menu_text():
