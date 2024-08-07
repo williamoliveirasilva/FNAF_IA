@@ -3,6 +3,10 @@ from pygame.locals import *
 from sys import exit
 import time
 import random
+import draw
+import config
+from animatronic import Animatronic
+from animatronic import Foxy
 
 pygame.init()
 
@@ -50,8 +54,8 @@ level_enhanced2 = False
 level_enhanced3 = False
 level_enhanced4 = False
 
-porta_esquerda = False
-porta_direita = False
+left_door = False
+right_door = False
 
 pos_seta_menu = 1
 sorteio = 0
@@ -83,7 +87,7 @@ nivel_energia = 100
 camera_1c = False
 
 
-def desenha_botao():
+def draw_buttons():
     botao_esquerdo = pygame.Rect(543, 624, 31, 58)
     botao_direito = pygame.Rect(1021, 624, 31, 58)
     botao_base_esquerda = pygame.Rect(540, 619, 37, 69)
@@ -92,27 +96,39 @@ def desenha_botao():
     pygame.draw.rect(tela, (155, 155, 155), botao_base_esquerda)
     pygame.draw.rect(tela, (155, 155, 155), botao_base_direita)
 
-    if porta_esquerda:
+    if left_door:
         pygame.draw.rect(tela, (0, 255, 0), botao_esquerdo)
     else:
         pygame.draw.rect(tela, (255, 0, 0), botao_esquerdo)
 
-    if porta_direita:
+    if right_door:
         pygame.draw.rect(tela, (0, 255, 0), botao_direito)
     else:
         pygame.draw.rect(tela, (255, 0, 0), botao_direito)
 
 
-def desenha_portas():
+def draw_doors():
     if nivel_energia > 0:
         desenho_porta_direita = pygame.Rect(840, 591, 21, 16)
         desenho_porta_esquerda = pygame.Rect(734, 591, 21, 16)
-        if porta_direita:
+        if right_door:
             pygame.draw.rect(tela, (155, 155, 155), desenho_porta_direita)
 
-        if porta_esquerda:
+        if left_door:
             pygame.draw.rect(tela, (155, 155, 155), desenho_porta_esquerda)
 
+
+bonnie = Animatronic()
+chica = Animatronic()
+foxy = Foxy()
+freddy = Animatronic()
+
+def reset_animatronics():
+    bonnie.setPosition('1a')
+    chica.setPosition('1a')
+    foxy.position('1c')
+    foxy.setStage('1')
+    freddy.setPosition('1a')
 
 def reset_game():
     porta_direita = False
@@ -120,11 +136,7 @@ def reset_game():
     level_enhanced2 = False
     level_enhanced3 = False
     level_enhanced4 = False
-    pos_bonnie = '1a'
-    pos_freddy = '1a'
-    pos_chica = '1a'
-    pos_foxy = '1c'
-    stg_foxy = '1'
+    reset_animatronics()
     tempo_inicial = pygame.time.get_ticks() // 1000
     contador_segundos = 0
     horario = 0
@@ -133,25 +145,18 @@ def reset_game():
 
 
 def mostrar_nivel():
-    nivel_bonnie = fonte.render("Bonnie: " + str(bonnie_level), True, (255, 255, 255))
+    nivel_bonnie = fonte.render("Bonnie: " + str(bonnie.level), True, (255, 255, 255))
     tela.blit(nivel_bonnie, (pos_horaX, 240 + 60))
-    nivel_chica = fonte.render("Chica: " + str(chica_level), True, (255, 255, 255))
+    nivel_chica = fonte.render("Chica: " + str(chica.level), True, (255, 255, 255))
     tela.blit(nivel_chica, (pos_horaX, 300 + 60))
-    nivel_foxy = fonte.render("Foxy: " + str(foxy_level), True, (255, 255, 255))
+    nivel_foxy = fonte.render("Foxy: " + str(foxy.level), True, (255, 255, 255))
     tela.blit(nivel_foxy, (pos_horaX, 360 + 60))
-    nivel_freddy = fonte.render("Freddy: " + str(freddy_level), True, (255, 255, 255))
+    nivel_freddy = fonte.render("Freddy: " + str(freddy.level), True, (255, 255, 255))
     tela.blit(nivel_freddy, (pos_horaX, 420 + 60))
 
 
 def noite_cumprida():
-    bonnie_level = 0
-    chica_level = 0
-    foxy_level = 0
-    freddy_level = 0
-    stg_foxy = '1'
-    pos_chica = '1a'
-    pos_bonnie = '1a'
-    pos_freddy = '1a'
+    reset_animatronics()
     cena = 4
 
 def draw_menu_text():
@@ -203,6 +208,7 @@ while True:
                 if event.type == KEYDOWN:
                     if event.key == K_RETURN:
                         if pos_seta_menu == 1:
+
                             bonnie_level = 0
                             chica_level = 0
                             foxy_level = 0
@@ -312,17 +318,17 @@ while True:
                 if event.key == K_LEFT:
                     if nivel_energia > 0:
                         som_porta.play()
-                        if porta_esquerda:
-                            porta_esquerda = False
+                        if left_door:
+                            left_door = False
                         else:
-                            porta_esquerda = True
+                            left_door = True
                 if event.key == K_RIGHT:
                     if nivel_energia > 0:
                         som_porta.play()
-                        if porta_direita:
-                            porta_direita = False
+                        if right_door:
+                            right_door = False
                         else:
-                            porta_direita = True
+                            right_door = True
 
         if contador_segundos % 3 == 0:
             numero_sorteado = random.randint(1, 20)
@@ -364,7 +370,7 @@ while True:
                 elif pos_bonnie == '5':
                     pos_bonnie = '1b'
                 elif pos_bonnie == '2b':
-                    if porta_esquerda:
+                    if left_door:
                         pos_bonnie = '1b'
                     else:
                         cena = 3
@@ -393,7 +399,7 @@ while True:
                     else:
                         pos_chica = '1b'
                 elif pos_chica == '4b':
-                    if not porta_direita:
+                    if not right_door:
                         cena = 3
                     else:
                         pos_chica = '1b'
@@ -435,8 +441,8 @@ while True:
             pos_chica = 'x'
             pos_bonnie = 'x'
             pos_freddy = 'x'
-            porta_esquerda = False
-            porta_direita = False
+            left_door = False
+            right_door = False
 
         if nivel_energia > 0:
             tela.blit(fundo, (0, 0))
@@ -536,22 +542,22 @@ while True:
         elif stg_foxy == '4':
             tela.blit(piratecove4_sprite, (503 - 37, 309 - 37))
             if contador_segundos % 25 == 0:
-                if not porta_esquerda:
+                if not left_door:
                     cena = 3
                 else:
                     stg_foxy = '1'
 
         if contador_segundos % 1 == 0:
-            if porta_esquerda:
+            if left_door:
                 nivel_energia -= 1
-            if porta_direita:
+            if right_door:
                 nivel_energia -= 1
 
         numero_sort = fonte.render("Energia: " + str(nivel_energia) + "%", True, (255, 255, 255))
         tela.blit(numero_sort, (pos_horaX, 240))
 
-        desenha_botao()
-        desenha_portas()
+        draw_buttons()
+        draw_doors()
         mostrar_nivel()
 
     elif cena == 3:
