@@ -214,53 +214,37 @@ while True:
                     if event.key == K_RETURN:
                         if pos_seta_menu == 1:
                             num_noite = 1
+                            setAnimatronicsLevel(0,0,0,0)
                             reset_animatronics()
                             reset_game()
                             cena = 2
                         elif pos_seta_menu == 2:
-                            bonnie.setLevel(3)
-
-
-                            bonnie_level = 3
-                            chica_level = 1
-                            foxy_level = 1
-                            freddy_level = 0
                             num_noite = 2
+                            reset_animatronics()
+                            setAnimatronicsLevel(3,1,1,0)
                             reset_game()
                             cena = 2
                         elif pos_seta_menu == 3:
-                            bonnie_level = 0
-                            chica_level = 5
-                            foxy_level = 2
-                            freddy_level = 1
+                            setAnimatronicsLevel(0,5,2,1)
                             num_noite = 3
-                            cena = 2
+                            reset_animatronics()
                             reset_game()
+                            cena = 2
                         elif pos_seta_menu == 4:
-                            bonnie_level = 2
-                            chica_level = 4
-                            foxy_level = 6
-                            nivel_freddy = random.randint(1, 2)
-                            if nivel_freddy == 1:
-                                nivel_freddy = 1
-                            else:
-                                nivel_freddy = 2
+                            setAnimatronicsLevel(2,4,6, random.randint(1,2))
                             num_noite = 4
+                            reset_animatronics()
                             reset_game()
                             cena = 2
                         elif pos_seta_menu == 5:
-                            bonnie_level = 5
-                            chica_level = 7
-                            foxy_level = 5
-                            freddy_level = 3
+                            reset_animatronics()
+                            setAnimatronicsLevel(5,7,5,3)
                             num_noite = 5
                             reset_game()
                             cena = 2
                         elif pos_seta_menu == 6:
-                            bonnie_level = 10
-                            chica_level = 12
-                            foxy_level = 16
-                            freddy_level = 4
+                            reset_animatronics()
+                            setAnimatronicsLevel(10,12,16,4)
                             num_noite = 6
                             reset_game()
                             cena = 2
