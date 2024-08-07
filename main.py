@@ -508,13 +508,13 @@ while True:
         elif bonnie.position == '2b':
             tela.blit(bonnie_sprite, (670 - 37, 564 - 55))
 
-        if stg_foxy == '1':
+        if foxy.stage == 1:
             tela.blit(piratecove1_sprite, (503 - 37, 309 - 37))
-        elif stg_foxy == '2':
+        elif foxy.stage == 2:
             tela.blit(piratecove2_sprite, (503 - 37, 309 - 37))
-        elif stg_foxy == '3':
+        elif foxy.stage == 3:
             tela.blit(piratecove3_sprite, (503 - 37, 309 - 37))
-        elif stg_foxy == '4':
+        elif foxy.stage == 4:
             tela.blit(piratecove4_sprite, (503 - 37, 309 - 37))
             if contador_segundos % 25 == 0:
                 if not left_door:
