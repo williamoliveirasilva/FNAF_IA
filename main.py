@@ -110,17 +110,21 @@ chica = Animatronic()
 foxy = Foxy()
 freddy = Animatronic()
 
+
 def setAnimatronicsLevel(b_level, c_level, fx_level, fr_level):
     bonnie.setLevel(b_level)
-    chica.setLevel(chica_level)
+    chica.setLevel(c_level)
     foxy.setLevel(fx_level)
     freddy.setLevel(fr_level)
+
+
 def reset_animatronics():
     bonnie.setPosition('1a')
     chica.setPosition('1a')
-    foxy.position('1c')
-    foxy.setStage('1')
+    foxy.setPosition('1c')
+    foxy.setStage(1)
     freddy.setPosition('1a')
+
 
 def reset_game():
     porta_direita = False
@@ -151,6 +155,7 @@ def noite_cumprida():
     reset_animatronics()
     cena = 4
 
+
 def draw_menu_text():
     titulo = fonte.render("FNAF AI", True, (255, 255, 255))
     tela.blit(titulo, (65, 65))
@@ -167,6 +172,7 @@ def draw_menu_text():
     noite_6 = fonte.render("Noite 6", True, (255, 255, 255))
     tela.blit(noite_6, (65, 465))
 
+
 def draw_menu_arrow():
     seta = fonte.render("<", True, (255, 255, 255))
 
@@ -182,6 +188,7 @@ def draw_menu_arrow():
         tela.blit(seta, (255, 405))
     elif pos_seta_menu == 6:
         tela.blit(seta, (255, 465))
+
 
 while True:
 
@@ -201,37 +208,37 @@ while True:
                     if event.key == K_RETURN:
                         if pos_seta_menu == 1:
                             num_noite = 1
-                            setAnimatronicsLevel(0,0,0,0)
+                            setAnimatronicsLevel(0, 0, 0, 0)
                             reset_animatronics()
                             reset_game()
                             cena = 2
                         elif pos_seta_menu == 2:
                             num_noite = 2
                             reset_animatronics()
-                            setAnimatronicsLevel(3,1,1,0)
+                            setAnimatronicsLevel(3, 1, 1, 0)
                             reset_game()
                             cena = 2
                         elif pos_seta_menu == 3:
-                            setAnimatronicsLevel(0,5,2,1)
+                            setAnimatronicsLevel(0, 5, 2, 1)
                             num_noite = 3
                             reset_animatronics()
                             reset_game()
                             cena = 2
                         elif pos_seta_menu == 4:
-                            setAnimatronicsLevel(2,4,6, random.randint(1,2))
+                            setAnimatronicsLevel(2, 4, 6, random.randint(1, 2))
                             num_noite = 4
                             reset_animatronics()
                             reset_game()
                             cena = 2
                         elif pos_seta_menu == 5:
                             reset_animatronics()
-                            setAnimatronicsLevel(5,7,5,3)
+                            setAnimatronicsLevel(5, 7, 5, 3)
                             num_noite = 5
                             reset_game()
                             cena = 2
                         elif pos_seta_menu == 6:
                             reset_animatronics()
-                            setAnimatronicsLevel(10,12,16,4)
+                            setAnimatronicsLevel(10, 12, 16, 4)
                             num_noite = 6
                             reset_game()
                             cena = 2
@@ -422,7 +429,7 @@ while True:
         if nivel_energia > 0:
             tela.blit(fundo, (0, 0))
         else:
-            tela.blit(fundo_apagado, (0,0))
+            tela.blit(fundo_apagado, (0, 0))
 
         mostrar_noite = fonte.render('Noite ' + str(num_noite), True, (255, 255, 255))
         tela.blit(mostrar_noite, (pos_noiteX, pos_noiteY))

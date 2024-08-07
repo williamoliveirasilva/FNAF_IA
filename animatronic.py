@@ -20,3 +20,6 @@ class Foxy(Animatronic):
 
     def setStage(self, new_stage):
         self.stage = new_stage
+
+    def printStage(self):
+        print(self.stage)
