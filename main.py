@@ -3,8 +3,6 @@ from pygame.locals import *
 from sys import exit
 import time
 import random
-import draw
-import config
 from animatronic import Animatronic
 from animatronic import Foxy
 
@@ -40,10 +38,6 @@ pos_chica = '1a'
 pos_foxy = '1c'
 stg_foxy = '1'
 
-bonnie_level = 0
-chica_level = 0
-freddy_level = 0
-foxy_level = 0
 
 pos_horaX = 30
 pos_horaY = 80
@@ -363,7 +357,7 @@ while True:
                     else:
                         cena = 3
 
-            if chica_level >= numero_sorteado:
+            if chica.level >= numero_sorteado:
                 som_movimentoBonnie.play()
                 if pos_chica == '1a':
                     pos_chica = '1b'
@@ -394,7 +388,7 @@ while True:
 
         if contador_segundos % 3 == 0:
             numero_sorteado = random.randint(1, 20)
-            if freddy_level >= numero_sorteado:
+            if freddy.level >= numero_sorteado:
                 print("Freddy se moveu")
 
         if 0 <= contador_segundos < 85:
@@ -425,10 +419,10 @@ while True:
             som_movimentoBonnie.stop()
             som_chicaCozinha.stop()
             som_semEnergia.play()
-            stg_foxy = '0'
-            pos_chica = 'x'
-            pos_bonnie = 'x'
-            pos_freddy = 'x'
+            foxy.stage = 0
+            chica.setPosition('x')
+            bonnie.setPosition('x')
+            freddy.setPosition('s')
             left_door = False
             right_door = False
 
@@ -468,23 +462,23 @@ while True:
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
             if not level_enhanced2:
                 level_enhanced2 = True
-                bonnie_level += 1
+                bonnie.levelEnhanced()
         elif horario == 3:
             mostrar_horas = fonte.render('3 AM', True, (255, 255, 255))
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
             if not level_enhanced3:
                 level_enhanced3 = True
-                bonnie_level += 1
-                chica_level += 1
-                foxy_level += 1
+                bonnie.levelEnhanced()
+                chica.levelEnhanced()
+                foxy.levelEnhanced()
         elif horario == 4:
             mostrar_horas = fonte.render('4 AM', True, (255, 255, 255))
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
             if not level_enhanced4:
                 level_enhanced4 = True
-                bonnie_level += 1
-                chica_level += 1
-                foxy_level += 1
+                bonnie.levelEnhanced()
+                chica.levelEnhanced()
+                foxy.levelEnhanced()
         elif horario == 5:
             mostrar_horas = fonte.render('5 AM', True, (255, 255, 255))
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
