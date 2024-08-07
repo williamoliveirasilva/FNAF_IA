@@ -5,6 +5,8 @@ import time
 import random
 import draw
 import config
+from animatronic import Animatronic
+from animatronic import Foxy
 
 pygame.init()
 
@@ -115,17 +117,24 @@ def draw_doors():
             pygame.draw.rect(tela, (155, 155, 155), desenho_porta_esquerda)
 
 
+bonnie = Animatronic()
+chica = Animatronic()
+foxy = Foxy()
+freddy = Animatronic()
+
 def reset_game():
     porta_direita = False
     porta_direita = False
     level_enhanced2 = False
     level_enhanced3 = False
     level_enhanced4 = False
-    pos_bonnie = '1a'
-    pos_freddy = '1a'
-    pos_chica = '1a'
-    pos_foxy = '1c'
-    stg_foxy = '1'
+
+    bonnie.setPosition('1a')
+    chica.setPosition('1a')
+    foxy.position('1c')
+    foxy.setStage('1')
+    freddy.setPosition('1a')
+
     tempo_inicial = pygame.time.get_ticks() // 1000
     contador_segundos = 0
     horario = 0
@@ -204,6 +213,7 @@ while True:
                 if event.type == KEYDOWN:
                     if event.key == K_RETURN:
                         if pos_seta_menu == 1:
+
                             bonnie_level = 0
                             chica_level = 0
                             foxy_level = 0

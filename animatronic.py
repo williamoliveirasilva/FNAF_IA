@@ -11,3 +11,9 @@ class Animatronic():
     def printPosition(self):
         print(self.position)
 
+
+class Foxy(Animatronic):
+    stage = 0
+
+    def setStage(self, new_stage):
+        self.stage = new_stage
