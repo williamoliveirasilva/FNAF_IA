@@ -478,34 +478,34 @@ while True:
         elif horario == 6:
             noite_cumprida()
 
-        if pos_chica == '1a':
+        if chica.position == '1a':
             tela.blit(chica_sprite, (779 - 37, 80 - 37))
 
-        elif pos_chica == '1b':
+        elif chica.position == '1b':
             tela.blit(chica_sprite, (903 - 37, 237 - 37))
-        elif pos_chica == '7':
+        elif chica.position == '7':
             tela.blit(chica_sprite, (1074 - 37, 236 - 37))
-        elif pos_chica == '6':
+        elif chica.position == '6':
             tela.blit(chica_sprite, (1040 - 37, 451 - 37))
-        elif pos_chica == '4a':
+        elif chica.position == '4a':
             tela.blit(chica_sprite, (887 - 37, 441 - 37))
-        elif pos_chica == '4b':
+        elif chica.position == '4b':
             tela.blit(chica_sprite, (887 - 37, 575 - 37))
 
-        if pos_freddy == '1a':
+        if freddy.position == '1a':
             tela.blit(freddy_sprite, (839 - 37, 80 - 37))
 
-        if pos_bonnie == '1a':
+        if bonnie.position == '1a':
             tela.blit(bonnie_sprite, (719 - 37, 80 - 55))
-        elif pos_bonnie == '1b':
+        elif bonnie.position == '1b':
             tela.blit(bonnie_sprite, (651 - 37, 237 - 55))
-        elif pos_bonnie == '5':
+        elif bonnie.position == '5':
             tela.blit(bonnie_sprite, (475 - 37, 171 - 55))
-        elif pos_bonnie == '3':
+        elif bonnie.position == '3':
             tela.blit(bonnie_sprite, (563 - 37, 482 - 55))
-        elif pos_bonnie == '2a':
+        elif bonnie.position == '2a':
             tela.blit(bonnie_sprite, (670 - 37, 441 - 55))
-        elif pos_bonnie == '2b':
+        elif bonnie.position == '2b':
             tela.blit(bonnie_sprite, (670 - 37, 564 - 55))
 
         if stg_foxy == '1':
