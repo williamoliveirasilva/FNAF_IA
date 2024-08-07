@@ -321,23 +321,23 @@ while True:
         if contador_segundos % 3 == 0:
             numero_sorteado = random.randint(1, 20)
 
-            if foxy_level >= numero_sorteado:
+            if foxy.level >= numero_sorteado:
                 if not camera_1c:
-                    if stg_foxy == '1':
-                        stg_foxy = '2'
-                    elif stg_foxy == '2':
-                        stg_foxy = '3'
-                    elif stg_foxy == '3':
-                        stg_foxy = '4'
+                    if foxy.stage == 1:
+                        foxy.setStage(2)
+                    elif foxy.stage == 2:
+                        foxy.setStage(3)
+                    elif foxy.stage == 3:
+                        foxy.setStage(4)
 
         if contador_segundos % 5 == 0:
             numero_sorteado = random.randint(1, 20)
             sorteio = numero_sorteado
-            if bonnie_level >= numero_sorteado:
+            if bonnie.level >= numero_sorteado:
                 som_movimentoBonnie.play()
-                if pos_bonnie == '1a':
+                if bonnie.position == '1a':
                     pos_bonnie = '1b'
-                elif pos_bonnie == '1b':
+                elif bonnie.position == '1b':
                     bonnie_move = random.randint(1, 2)
                     if bonnie_move == 1:
                         pos_bonnie = '2a'
