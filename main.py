@@ -123,6 +123,11 @@ chica = Animatronic()
 foxy = Foxy()
 freddy = Animatronic()
 
+def setAnimatronicsLevel(b_level, c_level, fx_level, fr_level):
+    bonnie.setLevel(b_level)
+    chica.setLevel(chica_level)
+    foxy.setLevel(fx_level)
+    freddy.setLevel(fr_level)
 def reset_animatronics():
     bonnie.setPosition('1a')
     chica.setPosition('1a')
@@ -208,15 +213,14 @@ while True:
                 if event.type == KEYDOWN:
                     if event.key == K_RETURN:
                         if pos_seta_menu == 1:
-
-                            bonnie_level = 0
-                            chica_level = 0
-                            foxy_level = 0
-                            freddy_level = 0
                             num_noite = 1
+                            reset_animatronics()
                             reset_game()
                             cena = 2
                         elif pos_seta_menu == 2:
+                            bonnie.setLevel(3)
+
+
                             bonnie_level = 3
                             chica_level = 1
                             foxy_level = 1
