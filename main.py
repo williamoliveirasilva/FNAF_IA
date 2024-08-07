@@ -3,8 +3,6 @@ from pygame.locals import *
 from sys import exit
 import time
 import random
-import draw
-import config
 from animatronic import Animatronic
 from animatronic import Foxy
 
@@ -33,17 +31,6 @@ horario = 0
 num_noite = 1
 
 cena = 1
-
-pos_bonnie = '1a'
-pos_freddy = '1a'
-pos_chica = '1a'
-pos_foxy = '1c'
-stg_foxy = '1'
-
-bonnie_level = 0
-chica_level = 0
-freddy_level = 0
-foxy_level = 0
 
 pos_horaX = 30
 pos_horaY = 80
@@ -123,6 +110,11 @@ chica = Animatronic()
 foxy = Foxy()
 freddy = Animatronic()
 
+def setAnimatronicsLevel(b_level, c_level, fx_level, fr_level):
+    bonnie.setLevel(b_level)
+    chica.setLevel(chica_level)
+    foxy.setLevel(fx_level)
+    freddy.setLevel(fr_level)
 def reset_animatronics():
     bonnie.setPosition('1a')
     chica.setPosition('1a')
@@ -208,55 +200,38 @@ while True:
                 if event.type == KEYDOWN:
                     if event.key == K_RETURN:
                         if pos_seta_menu == 1:
-
-                            bonnie_level = 0
-                            chica_level = 0
-                            foxy_level = 0
-                            freddy_level = 0
                             num_noite = 1
+                            setAnimatronicsLevel(0,0,0,0)
+                            reset_animatronics()
                             reset_game()
                             cena = 2
                         elif pos_seta_menu == 2:
-                            bonnie_level = 3
-                            chica_level = 1
-                            foxy_level = 1
-                            freddy_level = 0
                             num_noite = 2
+                            reset_animatronics()
+                            setAnimatronicsLevel(3,1,1,0)
                             reset_game()
                             cena = 2
                         elif pos_seta_menu == 3:
-                            bonnie_level = 0
-                            chica_level = 5
-                            foxy_level = 2
-                            freddy_level = 1
+                            setAnimatronicsLevel(0,5,2,1)
                             num_noite = 3
-                            cena = 2
+                            reset_animatronics()
                             reset_game()
+                            cena = 2
                         elif pos_seta_menu == 4:
-                            bonnie_level = 2
-                            chica_level = 4
-                            foxy_level = 6
-                            nivel_freddy = random.randint(1, 2)
-                            if nivel_freddy == 1:
-                                nivel_freddy = 1
-                            else:
-                                nivel_freddy = 2
+                            setAnimatronicsLevel(2,4,6, random.randint(1,2))
                             num_noite = 4
+                            reset_animatronics()
                             reset_game()
                             cena = 2
                         elif pos_seta_menu == 5:
-                            bonnie_level = 5
-                            chica_level = 7
-                            foxy_level = 5
-                            freddy_level = 3
+                            reset_animatronics()
+                            setAnimatronicsLevel(5,7,5,3)
                             num_noite = 5
                             reset_game()
                             cena = 2
                         elif pos_seta_menu == 6:
-                            bonnie_level = 10
-                            chica_level = 12
-                            foxy_level = 16
-                            freddy_level = 4
+                            reset_animatronics()
+                            setAnimatronicsLevel(10,12,16,4)
                             num_noite = 6
                             reset_game()
                             cena = 2
@@ -333,80 +308,80 @@ while True:
         if contador_segundos % 3 == 0:
             numero_sorteado = random.randint(1, 20)
 
-            if foxy_level >= numero_sorteado:
+            if foxy.level >= numero_sorteado:
                 if not camera_1c:
-                    if stg_foxy == '1':
-                        stg_foxy = '2'
-                    elif stg_foxy == '2':
-                        stg_foxy = '3'
-                    elif stg_foxy == '3':
-                        stg_foxy = '4'
+                    if foxy.stage == 1:
+                        foxy.setStage(2)
+                    elif foxy.stage == 2:
+                        foxy.setStage(3)
+                    elif foxy.stage == 3:
+                        foxy.setStage(4)
 
         if contador_segundos % 5 == 0:
             numero_sorteado = random.randint(1, 20)
             sorteio = numero_sorteado
-            if bonnie_level >= numero_sorteado:
+            if bonnie.level >= numero_sorteado:
                 som_movimentoBonnie.play()
-                if pos_bonnie == '1a':
-                    pos_bonnie = '1b'
-                elif pos_bonnie == '1b':
+                if bonnie.position == '1a':
+                    bonnie.setPosition('1b')
+                elif bonnie.position == '1b':
                     bonnie_move = random.randint(1, 2)
                     if bonnie_move == 1:
-                        pos_bonnie = '2a'
+                        bonnie.setPosition('2a')
                     elif bonnie_move == 2:
-                        pos_bonnie = '5'
+                        bonnie.setPosition('5')
                     elif bonnie_move == 3:
-                        pos_bonnie = '1a'
-                elif pos_bonnie == '2a':
+                        bonnie.setPosition('1a')
+                elif bonnie.position == '2a':
                     bonnie_move = random.randint(1, 3)
                     if bonnie_move == 1:
-                        pos_bonnie = '2b'
+                        bonnie.setPosition('2b')
                     elif bonnie_move == 2:
-                        pos_bonnie = '1b'
+                        bonnie.setPosition('1b')
                     elif bonnie_move == 3:
-                        pos_bonnie = '3'
-                elif pos_bonnie == '3':
-                    pos_bonnie = '2a'
-                elif pos_bonnie == '5':
-                    pos_bonnie = '1b'
-                elif pos_bonnie == '2b':
+                        bonnie.setPosition('3')
+                elif bonnie.position == '3':
+                    bonnie.setPosition('2a')
+                elif bonnie.position == '5':
+                    bonnie.setPosition('1b')
+                elif bonnie.position == '2b':
                     if left_door:
-                        pos_bonnie = '1b'
+                        bonnie.setPosition('1b')
                     else:
                         cena = 3
 
-            if chica_level >= numero_sorteado:
+            if chica.level >= numero_sorteado:
                 som_movimentoBonnie.play()
-                if pos_chica == '1a':
-                    pos_chica = '1b'
-                elif pos_chica == '1b':
+                if chica.position == '1a':
+                    chica.setPosition('1b')
+                elif chica.position == '1b':
                     chica_movimento = random.randint(1, 4)
                     if chica_movimento == 1:
-                        pos_chica = '7'
+                        chica.setPosition('7')
                     elif chica_movimento == 2:
-                        pos_chica = '6'
+                        chica.setPosition('6')
                         som_chicaCozinha.play()
                     elif chica_movimento == 3:
-                        pos_chica = '4a'
-                elif pos_chica == '7':
-                    pos_chica = '1b'
-                elif pos_chica == '6':
-                    pos_chica = '1b'
-                elif pos_chica == '4a':
+                        chica.setPosition('4a')
+                elif chica.position == '7':
+                    chica.setPosition('1b')
+                elif chica.position == '6':
+                    chica.setPosition('1b')
+                elif chica.position == '4a':
                     chica_movimento = random.randint(1, 2)
                     if chica_movimento == 1:
-                        pos_chica = '4b'
+                        chica.setPosition('4b')
                     else:
-                        pos_chica = '1b'
-                elif pos_chica == '4b':
+                        chica.setPosition('1b')
+                elif chica.position == '4b':
                     if not right_door:
                         cena = 3
                     else:
-                        pos_chica = '1b'
+                        chica.setPosition('1b')
 
         if contador_segundos % 3 == 0:
             numero_sorteado = random.randint(1, 20)
-            if freddy_level >= numero_sorteado:
+            if freddy.level >= numero_sorteado:
                 print("Freddy se moveu")
 
         if 0 <= contador_segundos < 85:
@@ -437,10 +412,10 @@ while True:
             som_movimentoBonnie.stop()
             som_chicaCozinha.stop()
             som_semEnergia.play()
-            stg_foxy = '0'
-            pos_chica = 'x'
-            pos_bonnie = 'x'
-            pos_freddy = 'x'
+            foxy.stage = 0
+            chica.setPosition('x')
+            bonnie.setPosition('x')
+            freddy.setPosition('s')
             left_door = False
             right_door = False
 
@@ -480,23 +455,23 @@ while True:
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
             if not level_enhanced2:
                 level_enhanced2 = True
-                bonnie_level += 1
+                bonnie.levelEnhanced()
         elif horario == 3:
             mostrar_horas = fonte.render('3 AM', True, (255, 255, 255))
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
             if not level_enhanced3:
                 level_enhanced3 = True
-                bonnie_level += 1
-                chica_level += 1
-                foxy_level += 1
+                bonnie.levelEnhanced()
+                chica.levelEnhanced()
+                foxy.levelEnhanced()
         elif horario == 4:
             mostrar_horas = fonte.render('4 AM', True, (255, 255, 255))
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
             if not level_enhanced4:
                 level_enhanced4 = True
-                bonnie_level += 1
-                chica_level += 1
-                foxy_level += 1
+                bonnie.levelEnhanced()
+                chica.levelEnhanced()
+                foxy.levelEnhanced()
         elif horario == 5:
             mostrar_horas = fonte.render('5 AM', True, (255, 255, 255))
             tela.blit(mostrar_horas, (pos_horaX, pos_horaY))
