@@ -336,30 +336,30 @@ while True:
             if bonnie.level >= numero_sorteado:
                 som_movimentoBonnie.play()
                 if bonnie.position == '1a':
-                    pos_bonnie = '1b'
+                    bonnie.setPosition('1b')
                 elif bonnie.position == '1b':
                     bonnie_move = random.randint(1, 2)
                     if bonnie_move == 1:
-                        pos_bonnie = '2a'
+                        bonnie.setPosition('2a')
                     elif bonnie_move == 2:
-                        pos_bonnie = '5'
+                        bonnie.setPosition('5')
                     elif bonnie_move == 3:
-                        pos_bonnie = '1a'
-                elif pos_bonnie == '2a':
+                        bonnie.setPosition('1a')
+                elif bonnie.position == '2a':
                     bonnie_move = random.randint(1, 3)
                     if bonnie_move == 1:
-                        pos_bonnie = '2b'
+                        bonnie.setPosition('2b')
                     elif bonnie_move == 2:
-                        pos_bonnie = '1b'
+                        bonnie.setPosition('1b')
                     elif bonnie_move == 3:
-                        pos_bonnie = '3'
-                elif pos_bonnie == '3':
-                    pos_bonnie = '2a'
-                elif pos_bonnie == '5':
-                    pos_bonnie = '1b'
-                elif pos_bonnie == '2b':
+                        bonnie.setPosition('3')
+                elif bonnie.position == '3':
+                    bonnie.setPosition('2a')
+                elif bonnie.position == '5':
+                    bonnie.setPosition('1b')
+                elif bonnie.position == '2b':
                     if left_door:
-                        pos_bonnie = '1b'
+                        bonnie.setPosition('1b')
                     else:
                         cena = 3
 
